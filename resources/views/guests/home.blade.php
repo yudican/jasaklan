@@ -7,7 +7,7 @@
                     <img src="/image/aasasas.JPG" class="h-[400px] object-cover w-full opacity-50 md:opacity-100" alt="Wild Landscape" />
                     <div class="absolute left-0 top-0 right-0 bottom-0 flex-col flex justify-center px-6">
                         <h1 class="font-bold text-black	text-3xl md:text-4 lg:text-3xl text-center text-capitalize">
-                            Hasilkan uang hanya dengan menonton iklan a
+                            Hasilkan uang hanya dengan menonton iklan
                         </h1>
                         <h2 class="font-medium lg:text-3xl text-black text-center mb-6 text-capitalize">
                             Kapan saja dan dimana saja
