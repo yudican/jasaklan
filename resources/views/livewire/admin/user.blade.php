@@ -22,7 +22,6 @@
             @if ($form_active)
             <div class="card">
                 <div class="card-body">
-                    <x-text-field type="number" name="balance" label="Balance" />
                     <x-text-field type="text" name="username" label="Username" />
                     <x-text-field type="text" name="name" label="Name" />
                     <x-text-field type="text" name="email" label="Email" />

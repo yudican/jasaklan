@@ -63,7 +63,6 @@
     @push('scripts')
     <script src="{{asset('assets/js/plugin/summernote/summernote-bs4.min.js')}}"></script>
 
-
     <script>
         document.addEventListener('livewire:load', function(e) {
             window.livewire.on('loadForm', (data) => {
@@ -84,6 +83,7 @@
             window.livewire.on('closeModal', (data) => {
                 $('#confirm-modal').modal('hide')
             });
+            
             window.livewire.on('confirmDelete', (data) => {
                 $('#confirm-modal').modal('show')
             });

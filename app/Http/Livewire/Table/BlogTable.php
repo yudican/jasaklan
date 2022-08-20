@@ -49,7 +49,7 @@ class BlogTable extends LivewireDatatable
 
     public function confirmDelete($id)
     {
-        $this->emit('getId', $id);
+        $this->emit('getBlogId', $id);
         $this->emit('confirmDelete', 'show');
     }
 

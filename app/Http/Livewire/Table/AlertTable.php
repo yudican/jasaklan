@@ -38,18 +38,24 @@ class AlertTable extends LivewireDatatable
                     'actions' => [
                         [
                             'type' => 'modal',
-                            'route' => 'showDetail',
-                            'label' => 'Lihat Detail',
+                            'route' => "getDataById('$id')",
+                            'label' => 'Update',
                         ],
                         [
                             'type' => 'modal',
-                            'route' => 'updateStatus',
-                            'label' => 'Ubah Status',
-                        ]
+                            'route' => "confirmDelete('$id')",
+                            'label' => 'Delete',
+                        ],
                     ]
                 ]);
             })->label(__('Aksi')),
         ];
+    }
+
+    public function confirmDelete($id)
+    {
+        $this->emit('getAlertId', $id);
+        $this->emit('confirmDelete', 'show');
     }
 
     public function toggleStatus($id)

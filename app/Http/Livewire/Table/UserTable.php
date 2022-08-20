@@ -50,17 +50,17 @@ class UserTable extends LivewireDatatable
                     'actions' => [
                         [
                             'type' => 'modal',
-                            'route' => 'getDataById(' . $id . ')',
+                            'route' => "getDataById('$id')",
                             'label' => 'Update',
                         ],
                         [
                             'type' => 'modal',
-                            'route' => 'updateBalance(' . $id . ')',
+                            'route' => "updateBalance('$id')",
                             'label' => 'Update Balance',
                         ],
                         [
                             'type' => 'modal',
-                            'route' => 'updatePassword(' . $id . ')',
+                            'route' => "updatePassword('$id')",
                             'label' => 'Update Password',
                         ]
                     ]

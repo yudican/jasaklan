@@ -68,6 +68,10 @@
             window.livewire.on('closeModal', (data) => {
                 $('#confirm-modal').modal('hide')
             });
+
+            window.livewire.on('confirmDelete', (data) => {
+                $('#confirm-modal').modal('show')
+            });
         })
     </script>
     @endpush
