@@ -1,7 +1,7 @@
 <div class="card">
-  {{-- <div wire:loading. wire:loading.flex class="flex justify-center items-center" style="background-color: #66626273;position:absolute;z-index:1;width: 98.5%;height: 100%;border-radius: 10px;">
+  <div wire:loading. wire:loading.flex class="flex justify-center items-center" style="background-color: #66626273;position:absolute;z-index:1;width: 98.5%;height: 100%;border-radius: 10px;">
     <img src=" {{asset('assets/img/loader.gif')}}" alt="loader">
-  </div> --}}
+  </div>
   @if($beforeTableSlot)
   <div class="mt-8">
     @include($beforeTableSlot)
