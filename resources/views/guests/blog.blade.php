@@ -14,9 +14,9 @@
             <!-- Column -->
             <div class="max-w-sm rounded overflow-hidden shadow-lg">
                 <div class="px-6 py-4">
-                    <a href="{{ route('blog-detail', strtolower(str_replace(' ','-',$blog->title))) }}" class="font-bold text-xl mb-2">{{$blog->title}}</a>
+                    <a href="{{ route('blog-detail', strtolower(str_replace('--','-',str_replace([' ','?','/'],'-',$blog->title))).'-'.$blog->id) }}" class="font-bold text-xl mb-2">{{$blog->title}}</a>
                     <p class="text-gray-700 text-base">
-                    {{substr($blog->body,0,100)}}.
+                        {{substr(strip_tags($blog->body),0,100)}}.
                     </p>
                 </div>
             </div>

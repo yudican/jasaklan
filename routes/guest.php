@@ -30,11 +30,14 @@ Route::get('/', function () {
 
 
 Route::get('/blog', function () {
-    $blogs=Blog::all();
-    return view('guests.blog',compact('blogs'));
+    $blogs = Blog::all();
+    return view('guests.blog', compact('blogs'));
 })->name('blog');
 Route::get('/blog/{slug}', function ($slug) {
-    
-    $blog=Blog::where('title',ucwords(str_replace('-',' ',$slug)))->first();
-    return view('guests.detail-blog',compact('blog'));
+    $slug = explode('-', $slug);
+    $blog = Blog::find(end($slug));
+    if ($blog) {
+        return view('guests.detail-blog', compact('blog'));
+    }
+    return redirect(route('dashboard'));
 })->name('blog-detail');
