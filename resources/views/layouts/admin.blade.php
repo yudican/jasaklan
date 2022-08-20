@@ -49,7 +49,7 @@
       <!-- Logo Header -->
       <div class="logo-header" data-background-color="blue">
 
-        <a href="{{route('dashboard')}}" class="logo">
+        <a href="{{route('admin.dashboard')}}" class="logo">
           <span class="text-white">JASAKLAN</span>
         </a>
         <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
