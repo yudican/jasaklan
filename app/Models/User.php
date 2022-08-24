@@ -122,4 +122,29 @@ class User extends Authenticatable
     {
         return $this->hasMany(Revenue::class, 'user_id');
     }
+
+    /**
+     * Get all of the balances for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function balances()
+    {
+        return $this->hasMany(Balance::class);
+    }
+
+    public function getBalanceAttribute()
+    {
+        return $this->balances()->whereStatus(1)->sum('amount');
+    }
+
+    /**
+     * The ads that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function adViews()
+    {
+        return $this->belongsToMany(Ads::class, 'ads_user', 'user_id', 'ads_id');
+    }
 }

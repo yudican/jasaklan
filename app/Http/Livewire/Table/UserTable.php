@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Table;
 use App\Models\HideableColumn;
 use App\Models\User;
 use Mediconesystems\LivewireDatatables\Column;
-use App\Http\Livewire\Table\LivewireDatatable;
+use Yudican\LaravelCrudGenerator\Livewire\Table\LivewireDatatable;
 
 class UserTable extends LivewireDatatable
 {
@@ -46,20 +46,19 @@ class UserTable extends LivewireDatatable
             Column::callback(['id'], function ($id) {
                 return view('livewire.components.action-button', [
                     'id' => $id,
-                    'toggleAction' => false,
                     'actions' => [
                         [
-                            'type' => 'modal',
+                            'type' => 'button',
                             'route' => "getDataById('$id')",
                             'label' => 'Update',
                         ],
                         [
-                            'type' => 'modal',
+                            'type' => 'button',
                             'route' => "updateBalance('$id')",
                             'label' => 'Update Balance',
                         ],
                         [
-                            'type' => 'modal',
+                            'type' => 'button',
                             'route' => "updatePassword('$id')",
                             'label' => 'Update Password',
                         ]

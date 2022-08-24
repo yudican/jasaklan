@@ -2,9 +2,12 @@
 
 namespace App\Http\Livewire\Table;
 
+use App\Models\Balance;
 use App\Models\Ticket;
 use Mediconesystems\LivewireDatatables\Column;
-use App\Http\Livewire\Table\LivewireDatatable;
+use Yudican\LaravelCrudGenerator\Livewire\Table\LivewireDatatable;
+
+// use App\Http\Livewire\Table\LivewireDatatable;
 
 class TicketTable extends LivewireDatatable
 {
@@ -35,20 +38,18 @@ class TicketTable extends LivewireDatatable
             Column::name('user.name')->label('User')->hide(),
 
             Column::callback(['id'], function ($id) {
-                $toggleAction = $this->toggleAction;
                 $ticket = Ticket::find($id);
                 if ($ticket->status == 'review') {
                     return view('livewire.components.action-button', [
                         'id' => $id,
-                        'toggleAction' => $toggleAction,
                         'actions' => [
                             [
-                                'type' => 'modal',
+                                'type' => 'button',
                                 'route' => 'updateStatus(' . $id . ',"reject")',
                                 'label' => 'Reject',
                             ],
                             [
-                                'type' => 'modal',
+                                'type' => 'button',
                                 'route' => 'updateStatus(' . $id . ',"approve")',
                                 'label' => 'Approve',
                             ]
@@ -62,7 +63,31 @@ class TicketTable extends LivewireDatatable
 
     public function updateStatus($id, $status)
     {
-        Ticket::find($id)->update(['status' => $status]);
+        $ticket = Ticket::find($id);
+        if ($status == 'approve') {
+            $ads_title = $ticket->getAd->title;
+            Balance::insert([
+                [
+                    'amount' => $ticket->getAd->package->commision,
+                    'category' => 'credit',
+                    'description' => "Menonton Iklan $ads_title $ticket->ads_id",
+                    'user_id' => $ticket->user_id,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'amount' => -$ticket->getAd->package->commision,
+                    'category' => 'debit',
+                    'description' => "Penayangan Iklan $ads_title $ticket->ads_id",
+                    'user_id' => $ticket->getAd->user_id,
+                    'status' => 1,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+            ]);
+        }
+
+        $ticket->update(['status' => $status]);
     }
 
     public function refreshTable()

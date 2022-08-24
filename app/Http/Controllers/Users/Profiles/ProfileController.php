@@ -13,6 +13,7 @@ use App\Jobs\HandleWithdrawBalance;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Jobs\HandleProfitReferralDeposit;
+use App\Models\Ads;
 use App\Models\Alert;
 use App\Models\Payment;
 
@@ -143,13 +144,15 @@ class ProfileController extends Controller
             'amount' => 'required|integer',
         ]);
 
-        if ((int) $request->amount < User::MINIMUM_DEPOSIT) return back()->withErrors(['status' => 'Minimun deposit adalah ' . User::MINIMUM_DEPOSIT]);
+        if ((int) $request->amount < getSetting('MINIMUM_DEPOSIT')) return back()->withErrors(['status' => 'Minimun deposit adalah ' . getSetting('MINIMUM_DEPOSIT')]);
 
-        $transaction = new Transaction();
+        $transaction = new Ads();
 
         $transaction->fill([
             'user_id' => $request->user()->id,
-            'type' => Transaction::INCOME,
+            'category' => 'Credit',
+            'status' => 2,
+            'description' => 'Deposit',
             'amount' => (int) $request->amount,
         ]);
 
@@ -197,8 +200,8 @@ class ProfileController extends Controller
 
         $payment = Payment::where("id", $order_id)->first();
 
-        Transaction::where('id', $payment->transaction_id)->update([
-            'status' => $transaction
+        Ads::where('id', $payment->transaction_id)->update([
+            'status' => 1
         ]);
 
         if ($transaction == 'settlement') {
@@ -206,7 +209,7 @@ class ProfileController extends Controller
                 HandleProfitReferralDeposit::dispatch($payment->amount, $referredBy->referred_by_id)->afterCommit();
             }
 
-            User::where("id", $payment->user_id)->increment('balance', $payment->amount);
+            // User::where("id", $payment->user_id)->increment('balance', $payment->amount);
         }
     }
 
@@ -223,8 +226,8 @@ class ProfileController extends Controller
         if (!Hash::check($request->password, $request->user()->password))
             return back()->withErrors(['status' => 'Password tidak sesuai']);
 
-        if ($request->amount < Withdraw::MINIMUM_WITHDRAW) return back()->withErrors([
-            'status' => 'Minimum penarikan adalah ' . (new Transaction)->getFormattedPrice(Withdraw::MINIMUM_WITHDRAW),
+        if ($request->amount < getSetting('MINIMUM_WITHDRAW')) return back()->withErrors([
+            'status' => 'Minimum penarikan adalah ' . (new Transaction)->getFormattedPrice(getSetting('MINIMUM_WITHDRAW')),
         ]);
 
         if ($user->balance < (int) $request->amount) return back()->withErrors(['status' => 'Saldo kamu tidak cukup']);
@@ -232,13 +235,15 @@ class ProfileController extends Controller
         $balance    = $user->balance;
         $newBalance = (int) $balance - (int) $request->amount;
 
-        $transaction = new Transaction();
+        $transaction = new Ads();
         $withdraw    = new Withdraw();
 
         $transaction->fill([
             'user_id' => $user->id,
-            'type'    => Transaction::WITHDRAW,
-            'amount'  => (int)$request->amount,
+            'type'    => 'debit',
+            'status' => 2,
+            'description' => 'Withdraw',
+            'amount'  => -$request->amount,
         ]);
 
         $withdraw->fill([

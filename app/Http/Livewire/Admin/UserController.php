@@ -12,7 +12,6 @@ class UserController extends Component
 
     public $user_id;
     public $username;
-    public $balance = 0;
     public $name;
     public $email;
     public $password;
@@ -23,7 +22,11 @@ class UserController extends Component
     public $postal_code;
     public $active;
 
-
+    // balance
+    public $balance = 0;
+    public $current_balance = 0;
+    public $type_balance;
+    public $description_balance;
 
     public $route_name = null;
 
@@ -69,12 +72,18 @@ class UserController extends Component
     public function saveBalance()
     {
         $this->validate([
-            'balance' => 'required|numeric'
+            'balance' => 'required|numeric',
+            'type_balance' => 'required',
+            'description_balance' => 'required',
         ]);
 
         $user = User::find($this->user_id);
-        $user->balance = $this->balance;
-        $user->save();
+        $type = $this->type_balance;
+        $user->balances()->create([
+            'amount' => $type == 'credit' ? $this->balance : -$this->balance,
+            'category' => $this->type_balance,
+            'description' => $this->description_balance
+        ]);
         $this->_reset();
         return $this->emit('showAlert', ['msg' => 'Balance Berhasil Diupdate']);
     }
@@ -166,7 +175,7 @@ class UserController extends Component
     {
         $row = User::find($user_id);
         $this->user_id = $row->id;
-        $this->balance = $row->balance;
+        $this->current_balance = $row->balance;
     }
 
     public function toggleForm($form)
@@ -191,6 +200,9 @@ class UserController extends Component
         $this->user_id = null;
         $this->username = null;
         $this->balance = 0;
+        $this->type_balance;
+        $this->description_balance;
+        $this->current_balance = 0;
         $this->name = null;
         $this->email = null;
         $this->password = null;

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf6791d4e20e88c2c1584671e0f02d6e",
+    "content-hash": "ceb6307b9907e8157142ba2ea6fea478",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6192,6 +6192,62 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "yudican/laravel-crud-generator",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yudican/laravel-crud-generator.git",
+                "reference": "213aa6ab12d3cf368f316f714a95e4e2b4c176b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yudican/laravel-crud-generator/zipball/213aa6ab12d3cf368f316f714a95e4e2b4c176b7",
+                "reference": "213aa6ab12d3cf368f316f714a95e4e2b4c176b7",
+                "shasum": ""
+            },
+            "require": {
+                "livewire/livewire": "^2.10",
+                "mediconesystems/livewire-datatables": "^0.9.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Yudican\\LaravelCrudGenerator\\LaravelCrudGeneratorServiceProvider"
+                    ]
+                },
+                "aliases": {
+                    "LaravelCrudGenerator": "Yudican\\LaravelCrudGenerator"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yudican\\LaravelCrudGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yudi Candra"
+                }
+            ],
+            "description": "Laravel Livewire Crud Generator",
+            "keywords": [
+                "crud generator",
+                "laravel",
+                "livewire"
+            ],
+            "support": {
+                "issues": "https://github.com/yudican/laravel-crud-generator/issues",
+                "source": "https://github.com/yudican/laravel-crud-generator/tree/master"
+            },
+            "time": "2022-08-21T15:56:11+00:00"
         }
     ],
     "packages-dev": [
@@ -8910,7 +8966,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "yudican/laravel-crud-generator": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

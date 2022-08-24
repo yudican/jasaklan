@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Table;
 
 use App\Models\Alert;
 use Mediconesystems\LivewireDatatables\Column;
-use App\Http\Livewire\Table\LivewireDatatable;
+use Yudican\LaravelCrudGenerator\Livewire\Table\LivewireDatatable;
 
 class AlertTable extends LivewireDatatable
 {
@@ -31,18 +31,16 @@ class AlertTable extends LivewireDatatable
             })->label(__(' Status')),
 
             Column::callback(['id'], function ($id) {
-                $toggleAction = $this->toggleAction;
                 return view('livewire.components.action-button', [
                     'id' => $id,
-                    'toggleAction' => $toggleAction,
                     'actions' => [
                         [
-                            'type' => 'modal',
+                            'type' => 'button',
                             'route' => "getDataById('$id')",
                             'label' => 'Update',
                         ],
                         [
-                            'type' => 'modal',
+                            'type' => 'button',
                             'route' => "confirmDelete('$id')",
                             'label' => 'Delete',
                         ],

@@ -4,11 +4,16 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\TicketController;
 use App\Http\Controllers\AlertController;
 use App\Http\Controllers\BlogController;
+use App\Http\Livewire\Admin\AdsTypeController;
 use App\Http\Livewire\Admin\AlertController as AdminAlertController;
 use App\Http\Livewire\Admin\BlogController as AdminBlogController;
+use App\Http\Livewire\Admin\GeneralSettingController;
+use App\Http\Livewire\Admin\PackageController;
+use App\Http\Livewire\Admin\SocialMediaController;
 use App\Http\Livewire\Admin\TicketController as AdminTicketController;
 use App\Http\Livewire\Admin\UserController;
 use App\Http\Livewire\Dashboard;
+use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->as('admin.')->group(function () {
@@ -22,6 +27,10 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('blog', AdminBlogController::class)->name('blog');
         Route::get('alert', AdminAlertController::class)->name('alert');
         Route::get('user-management', UserController::class)->name('user');
+        Route::get('product', PackageController::class)->name('product');
+        Route::get('ads-type', AdsTypeController::class)->name('ads_type');
+        Route::get('social-media', SocialMediaController::class)->name('social_media');
+        Route::get('general-setting', GeneralSettingController::class)->name('general.setting');
         Route::get('tickets', [TicketController::class, 'index'])->name('ticket.index');
         Route::get('ticket/{ticket}/download', [TicketController::class, 'download'])->name('ticket.download');
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');

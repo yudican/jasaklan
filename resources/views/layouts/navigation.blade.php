@@ -30,14 +30,10 @@
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
-                <button @click="open = ! open"
-                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex"
-                            stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round"
-                            stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        <path :class="{ 'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        <path :class="{ 'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
@@ -72,144 +68,148 @@
             </x-responsive-nav-link>
 
             @guest
-                <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
-                    {{ __('Login') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
-                    {{ __('Register') }}
-                </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('login')" :active="request()->routeIs('login')">
+                {{ __('Login') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                {{ __('Register') }}
+            </x-responsive-nav-link>
             @endguest
 
             @auth
-                <!-- Responsive Settings Options -->
-                <div class="pb-1 border-t border-gray-200">
-                    {{-- <div class="px-4">
+            <!-- Responsive Settings Options -->
+            <div class="pb-1 border-t border-gray-200">
+                {{-- <div class="px-4">
                     <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
                 </div> --}}
-                    <div class="space-y-1">
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
+                <div class="space-y-1">
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
 
-                            <x-responsive-nav-link :href="route('logout')"
-                                onclick="event.preventDefault();
+                        <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-responsive-nav-link>
-                        </form>
+                            {{ __('Log Out') }}
+                        </x-responsive-nav-link>
+                    </form>
+                </div>
+            </div>
+
+            <div class="bg-gray-600 text-white relative">
+                <div class="flex justify-center items-center py-4 responsive-auth-link">
+                    <a href="#" class="text-white hover:text-white block text-center">
+                        <span>
+                            {{ Auth::user()->name }}
+                        </span>
+                    </a>
+                    <div class="ml-1">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
                     </div>
                 </div>
+                <div class="responsive-nav-link h-0 transition-height overflow-hidden">
+                    <x-responsive-nav-link :href="route('user.dashboard')" :active="request()->routeIs('dashboard')">
+                        {{ __('Dashboard') }}
+                    </x-responsive-nav-link>
 
-                <div class="bg-gray-600 text-white relative">
-                    <div class="flex justify-center items-center py-4 responsive-auth-link">
-                        <a href="#" class="text-white hover:text-white block text-center">
-                            <span>
-                                {{ Auth::user()->name }}
-                            </span>
-                        </a>
-                        <div class="ml-1">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="responsive-nav-link h-0 transition-height overflow-hidden">
-                        <x-responsive-nav-link :href="route('user.dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('user.profile')">
+                        {{ __('Edit Profile') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('user.profile')">
-                            {{ __('Edit Profile') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('user.showPassword')">
+                        {{ __('Ubah Password') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('user.showPassword')">
-                            {{ __('Ubah Password') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('user.referral')">
+                        {{ __('Daftar Referral') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('user.referral')">
-                            {{ __('Daftar Referral') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('user.bank')">
+                        {{ __('Akun Bank') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('user.bank')">
-                            {{ __('Akun Bank') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('user.wallet')">
+                        {{ __('Dompet') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('user.wallet')">
-                            {{ __('Dompet') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('advertiser.deposit')">
+                        {{ __('Deposit') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('advertiser.deposit')">
-                            {{ __('Deposit') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('advertisers.dashboard')">
+                        {{ __('Buat Iklan') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('advertisers.dashboard')">
-                            {{ __('Buat Iklan') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('iklan.view.views')">
+                        {{ __('Daftar Iklan View') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('iklan.view.views')">
-                            {{ __('Daftar Iklan View') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('iklan.view.subscribe')">
+                        {{ __('Daftar Iklan Subscribe') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('iklan.view.subscribe')">
-                            {{ __('Daftar Iklan Subscribe') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('iklan.view.follower')">
+                        {{ __('Daftar Iklan Follow') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('iklan.view.follower')">
-                            {{ __('Daftar Iklan Follow') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('iklan.view.like')">
+                        {{ __('Daftar Iklan Like') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('iklan.view.like')">
-                            {{ __('Daftar Iklan Like') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('iklan.view.komentar')">
+                        {{ __('Daftar Iklan Komentar') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('iklan.view.komentar')">
-                            {{ __('Daftar Iklan Komentar') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('iklan.view.posting')">
+                        {{ __('Daftar Iklan Posting') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('iklan.view.posting')">
-                            {{ __('Daftar Iklan Posting') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('iklan.view.posting')">
+                        {{ __('Daftar Iklan Posting') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('viewers.view')">
-                            {{ __('Lihat Iklan View') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'views'])">
+                        {{ __('Lihat Iklan View') }}
+                    </x-responsive-nav-link>
 
-                        {{-- <x-responsive-nav-link :href="route('viewers.question')"> --}}
+                    {{-- <x-responsive-nav-link :href="route('viewers.question')"> --}}
                         {{-- {{ __('Lihat Iklan View Questions') }} --}}
                         {{-- </x-responsive-nav-link> --}}
 
-                        <x-responsive-nav-link :href="route('viewers.subscribe')">
-                            {{ __('Lihat Iklan Subscribe') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'subscribe'])">
+                        {{ __('Lihat Iklan Subscribe') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('viewers.follow')">
-                            {{ __('Lihat Iklan Follow') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'follower'])">
+                        {{ __('Lihat Iklan Follow') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('viewers.like')">
-                            {{ __('Lihat Iklan Like') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'like'])">
+                        {{ __('Lihat Iklan Like') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('viewers.komentar')">
-                            {{ __('Lihat Iklan Komentar') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'comment'])">
+                        {{ __('Lihat Iklan Komentar') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('viewers.posting')">
-                            {{ __('Lihat Iklan Posting') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'posting'])">
+                        {{ __('Lihat Iklan Posting') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'share'])">
+                        {{ __('Lihat Iklan Posting') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('viewers.ticket.index')">
-                            {{ __('Tiket Saya') }}
-                        </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('viewers.ticket.index')">
+                        {{ __('Tiket Saya') }}
+                    </x-responsive-nav-link>
 
-                        <x-responsive-nav-link :href="route('viewers.revenue.index')">
-                            {{ __('Penghasilan') }}
-                        </x-responsive-nav-link>
-                    </div>
+                    <x-responsive-nav-link :href="route('viewers.revenue.index')">
+                        {{ __('Penghasilan') }}
+                    </x-responsive-nav-link>
                 </div>
+            </div>
             @endauth
 
         </div>
@@ -218,12 +218,12 @@
 </nav>
 
 @push('scripts')
-    <script>
-        const authEl = document.querySelector('.responsive-auth-link')
+<script>
+    const authEl = document.querySelector('.responsive-auth-link')
         const resNavLink = document.querySelector('.responsive-nav-link')
         authEl.onclick = (e) => {
             e.preventDefault()
             resNavLink.classList.toggle('h-0')
         }
-    </script>
+</script>
 @endpush

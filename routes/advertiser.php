@@ -4,9 +4,11 @@ use App\Http\Controllers\Users\Advertisers\AdvertiserController;
 use App\Http\Controllers\Users\Advertisers\Create\FollowController;
 use App\Http\Controllers\Users\Advertisers\Create\CommentController;
 use App\Http\Controllers\Users\Advertisers\Create\LikeController;
+use App\Http\Livewire\Ads\Views\CreateAds;
+use App\Http\Livewire\Ads\Views\MyAdsList;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth')->prefix('advertiser')->group(function() {
+Route::middleware('auth')->prefix('advertiser')->group(function () {
     Route::get('create', [AdvertiserController::class, 'dashboard'])->name('advertisers.dashboard');
 
     Route::get('/tambah/iklan-follower', [FollowController::class, 'index'])->name('iklan.add.follower');
@@ -37,4 +39,6 @@ Route::middleware('auth')->prefix('advertiser')->group(function() {
     Route::get('/iklan-like', [AdvertiserController::class, 'indexLike'])->name('iklan.view.like');
     Route::get('/iklan-komentar', [AdvertiserController::class, 'indexKomentar'])->name('iklan.view.komentar');
 
+    Route::get('buat-iklan', CreateAds::class)->name('ads.create');
+    Route::get('daftar-iklan-{type}', MyAdsList::class)->name('iklan.myads');
 });

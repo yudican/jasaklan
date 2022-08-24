@@ -6,62 +6,26 @@
             </h2>
         </div>
     </x-slot>
-    <div class="md:mx-8 mt-12 md:px-4 md:text-base text-[10px] mx-2 px-2 py-2 rounded border border-gray-500">
-        <p class="text-2xl font-bold">Keterangan</p>
-        <ul class="list-decimal px-8 mt-4 text-justify">
-            <li>Setiap 1 subscribe member akan di bayar {{ \App\Models\Ads::SUBS_COM }}</li>
-            <li>Dana akan masuk ke menu penghasilan setelah Advertiser melakukan pengecekan maksimal 7 hari.</li>
-            <li>Member dilarang keras Unsubscribe. Bila hal ini dilakukan maka akun akan dibanned dan tidak diperbolehkan
-                mengikuti program ini selamanya.
-            </li>
-        </ul>
+    <div class=" mx-2 block p-6 my-4  bg-white rounded-xl border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <h5 class=" text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Keterangan</h5>
+        <p class="font-normal text-gray-700 dark:text-gray-400">1. Setiap views member akan di bayar sesuai dengan yang tertera di bawah</p>
+        <p class="font-normal text-gray-700 dark:text-gray-400">2. Dana akan masuk ke menu penghasilan setelah Advertiser melakukan pengecekan maksimal 7 hari.</p>
     </div>
-    <div class="md:mx-8 md:px-4 md:text-base text-[10px] mx-2 px-2 py-2 rounded">
-
-        @forelse($subscribers as $subs)
+    <div class="text-[10px] px-2 py-2 rounded">
+        <div class=" text-[10px] py-4 rounded">
+            @foreach($subscribers as $ads)
             <!-- component -->
-            <div
-                class="bg-white rounded-lg border border-gray-200 px-4 py-2 border-b my-2 rounded-t-lg flex justify-between">
-                <div class="py-2">
-                    <a aria-current="true"
-                       class="cursor-pointer font-medium text-blue-500 hover:text-blue-700">
-                        {{ $subs->title }}
-                    </a>
-                    <div href="#" aria-current="true">
-                        <img class="inline-block w-2.5 md:w-7"
-                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA70lEQVRIie3UP04CQRTH8c8KMR7AE1AaO29gwwU8Ar2lPZi4NJacgNgbjoDQWtuaLKEkxNZg4RI2O8ufZdfC6C/Z5s2b3/ftezPDv0poglVN33htGmUAq5oLjvKBNb1bwbSb8Qm0dQGn6GOGBHEaK+WzCxAL+xxXBUxshpUUAJKCvMDnZEsVOys5Mq90ix7K+uwbcuy7LZWHXOWY9vKAH79o2SG/1Gg+3p/ym9VCB0+YC4/nGwa4wXlmX9PmQl4cCotwiVs8Y5GDfeIVj3hPYzMFL+mhauAKdxhhKfzD4bHmRTrDNe4xxQfadQL+gL4ASwtvvtpZqD4AAAAASUVORK5CYII=">
-                        <div class="inline-block">{{ $subs->getCommissionFee() }}</div>
-                    </div>
-                </div>
-                <div>
-                    <div class="flex gap-4 py-4">
-                        <div>
-                        <span
-                            class="bg-red-100 text-red-800 text-xs md:text-sm font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">{{ $subs->getSocialMedia() }}</span>
-                            <div>
-                                <span class="text-xs">Sisa Tiket: {{ $subs->getTicket() }}</span>
-                            </div>
-                        </div>
-                        <div class="my-auto">
-                            @if($subs->alreadyGetTicket($subs->id))
-                                <a
-                                    class="text-white px-3 py-2 bg-blue-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                                    Sudah Diambil
-                                </a>
-                            @else
-                                <a
-                                    href="{{ route('viewers.ticket.session', $subs->id) }}"
-                                    class="text-white px-3 py-2 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                    Ambil Tiket
-                                </a>
-                            @endif
-                        </div>
-                    </div>
+            @livewire('ads.views.get-ticket', ['ads' => $ads])
+            @endforeach
+            @if (count($subscribers) == 0)
+            <div class="mx-auto max-w-lg p-6 flex justify-center items-center">
+                <div class="text-center">
+                    <img src="{{asset('assets/img/empty.svg')}}" alt="" style="height:200">
+                    <span class="mt-2">Belum Ada Iklan Disini</span>
                 </div>
             </div>
-        @empty
-            <div>Kosong</div>
-        @endforelse
+            @endif
+        </div>
 
         {{ $subscribers->links() }}
 

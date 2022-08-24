@@ -18,6 +18,6 @@ class Payment extends Model
 
     public function getTransaction(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Transaction::class, "transaction_id");
+        return $this->belongsTo(Ads::class, "transaction_id");
     }
 }

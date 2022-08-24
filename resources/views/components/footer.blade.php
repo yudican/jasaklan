@@ -65,8 +65,7 @@
         </div>
         <div class="mb-6 md:mb-0">
             <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Payment</h2>
-            <img src="/image/f03965da-a4dd-44a2-bb8c-efe6a2a15668.png" class="flex items-center mr-3 w-full"
-                alt="FlowBite Logo" />
+            <img src="/image/f03965da-a4dd-44a2-bb8c-efe6a2a15668.png" class="flex items-center mr-3 w-full" alt="FlowBite Logo" />
         </div>
     </div>
     <div>

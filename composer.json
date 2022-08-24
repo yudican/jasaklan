@@ -14,7 +14,8 @@
         "laravel/ui": "^3.4",
         "livewire/livewire": "^2.10",
         "mediconesystems/livewire-datatables": "^0.9.5",
-        "midtrans/midtrans-php": "^2.5"
+        "midtrans/midtrans-php": "^2.5",
+        "yudican/laravel-crud-generator": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -31,7 +32,16 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "exclude-from-classmap": [
+            "vendor/livewire/livewire/src/Controllers/FilePreviewHandler.php",
+            "vendor/livewire/livewire/src/Controllers/FileUploadHandler.php"
+        ],
+        "files": [
+            "app/helpers.php",
+            "app/overrides/livewire/FilePreviewHandler.php",
+            "app/overrides/livewire/FileUploadHandler.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

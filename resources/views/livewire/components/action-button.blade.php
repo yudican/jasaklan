@@ -8,9 +8,7 @@
       @foreach ($actions as $extra)
       @if ($extra['type'] == 'link')
       <a href="{{route($extra['route'],$extra['params'])}}" class="dropdown-item">{{$extra['label']}}</a>
-      @elseif ($extra['type'] == 'modal')
-      <button wire:click="{{$extra['route']}}" class="dropdown-item">{{$extra['label']}}</button>
-      @else
+      @elseif ($extra['type'] == 'button')
       <button wire:click="{{$extra['route']}}" class="dropdown-item">{{$extra['label']}}</button>
       @endif
       @endforeach

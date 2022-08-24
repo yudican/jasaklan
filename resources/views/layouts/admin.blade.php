@@ -132,6 +132,30 @@
                 <p>Member</p>
               </a>
             </li>
+            <li class="nav-item {{request()->routeIs('admin.product') ? 'active' : ''}}">
+              <a href="{{route('admin.product')}}">
+                <i class="fas fa-list"></i>
+                <p>Product</p>
+              </a>
+            </li>
+            <li class="nav-item {{request()->routeIs('admin.ads_type') ? 'active' : ''}}">
+              <a href="{{route('admin.ads_type')}}">
+                <i class="fas fa-list"></i>
+                <p>Ads Type</p>
+              </a>
+            </li>
+            <li class="nav-item {{request()->routeIs('admin.social_media') ? 'active' : ''}}">
+              <a href="{{route('admin.social_media')}}">
+                <i class="fas fa-list"></i>
+                <p>Social Media</p>
+              </a>
+            </li>
+            <li class="nav-item {{request()->routeIs('admin.general.setting') ? 'active' : ''}}">
+              <a href="{{route('admin.general.setting')}}">
+                <i class="fas fa-cogs"></i>
+                <p>General Setting</p>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

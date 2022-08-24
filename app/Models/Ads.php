@@ -33,6 +33,8 @@ class Ads extends Model
         'status' => self::PENDING,
     ];
 
+    protected $appends = ['youtube_id'];
+
     const PENDING = 'pending';
     const ACTIVE  = 'active';
     const FINISH  = 'finish';
@@ -56,12 +58,12 @@ class Ads extends Model
 
     public function tickets(): HasMany
     {
-        return $this->hasMany(Ticket::class, 'ticket_id');
+        return $this->hasMany(Ticket::class);
     }
 
-    public function getCommissionFee()
+    public function getCommissionFee($type = 'views')
     {
-        return "Rp" . $this->commission . " / " . $this->type;
+        return "Rp" . $this->package->commission . " / " . $this->type;
     }
 
     public function getTicket()
@@ -84,4 +86,39 @@ class Ads extends Model
         return 'Rp' . number_format($attr, 0, ',', '.');
     }
 
+    /**
+     * Get the user that owns the Ads
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * The ads that belong to the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function userViews()
+    {
+        return $this->belongsToMany(User::class, 'ads_user', 'ads_id', 'user_id');
+    }
+
+    public function getYoutubeIdAttribute()
+    {
+        $url = $this->url;
+
+        if ($url) {
+            $urls = explode("/embed/", $url);
+            if (count($urls) > 1) {
+                return $urls[1];
+            }
+
+            return null;
+        }
+
+        return null;
+    }
 }

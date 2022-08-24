@@ -6,7 +6,7 @@ use App\Models\HideableColumn;
 use App\Models\Blog;
 use Mediconesystems\LivewireDatatables\BooleanColumn;
 use Mediconesystems\LivewireDatatables\Column;
-use App\Http\Livewire\Table\LivewireDatatable;
+use Yudican\LaravelCrudGenerator\Livewire\Table\LivewireDatatable;
 
 class BlogTable extends LivewireDatatable
 {
@@ -26,18 +26,16 @@ class BlogTable extends LivewireDatatable
             Column::name('created_at')->label('Tanggal Post')->searchable(),
 
             Column::callback(['id'], function ($id) {
-                $toggleAction = $this->toggleAction;
-                return view('livewire.components.action-button', [
+                return view('crud-generator-components::action-button', [
                     'id' => $id,
-                    'toggleAction' => $toggleAction,
                     'actions' => [
                         [
-                            'type' => 'modal',
+                            'type' => 'button',
                             'route' => 'getDataById(' . $id . ')',
                             'label' => 'Edit',
                         ],
                         [
-                            'type' => 'modal',
+                            'type' => 'button',
                             'route' => 'confirmDelete(' . $id . ')',
                             'label' => 'Hapus',
                         ]

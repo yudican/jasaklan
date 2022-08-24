@@ -17,6 +17,7 @@ class Package extends Model
         'price',
         'benefits',
         'commission',
+        'ads_type_id'
     ];
 
     const FOLLOWER   = "follower";
@@ -25,6 +26,7 @@ class Package extends Model
     const LIKE       = "like";
     const POSTING    = "posting";
     const VIEWS      = "views";
+    const SHARE      = "share";
 
     public function getNameAttribute(): string
     {
@@ -34,5 +36,15 @@ class Package extends Model
     public function getPackageName(): string
     {
         return (new Transaction())->getFormattedPrice($this->price) . ' - ' . $this->benefits . ' ' . $this->label;
+    }
+
+    /**
+     * Get the adsType that owns the Package
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function adsType()
+    {
+        return $this->belongsTo(AdsType::class);
     }
 }

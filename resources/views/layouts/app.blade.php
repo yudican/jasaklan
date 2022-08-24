@@ -12,12 +12,8 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script type="text/javascript" src="https://app.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
-    <!-- Scripts -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    @livewireStyles
 </head>
 
 <body class="font-sans antialiased">
@@ -31,12 +27,56 @@
         </header>
 
         <!-- Page Content -->
-        <main>
+        <main class="px-8">
             {{ $slot }}
         </main>
     </div>
     <x-footer />
+    <script src="{{ asset('assets/js/core/jquery.3.2.1.min.js') }}"></script>
+    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script type="text/javascript" src="https://app.midtrans.com/snap/snap.js" data-client-key="{{ env('MIDTRANS_CLIENT_KEY') }}"></script>
+    <!-- Scripts -->
+    <script src="https://cdn.tailwindcss.com"></script>
     @stack('scripts')
+    <script>
+        $(document).ready(function(value) {
+            window.livewire.on('showAlert', (data) => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: data.msg,
+                    timer: 2000,
+                    showCancelButton: false,
+                    showConfirmButton: false
+                })
+                if (data?.redirect) {
+                    setTimeout(() => {
+                        window.location.href = data.redirect
+                    }, 2000)
+                }
+            });
+            
+            window.livewire.on('showAlertError', (data) => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: data.msg,
+                    timer: 2000,
+                    showCancelButton: false,
+                    showConfirmButton: false
+                })
+            });
+
+            window.livewire.on('openAdsUrl', (data) => {
+                window.href = data
+                setTimeout(() => {
+                    window.open('/viewers/iklan-view', '_blank');
+                }, 2000);
+            });
+        })
+    </script>
     <script>
         const modalElement = document.getElementById("konfirmasi");
             const modal = new Modal(modalElement);
@@ -50,6 +90,7 @@
             }
 
     </script>
+    @livewireScripts
 </body>
 
 </html>

@@ -25,17 +25,15 @@
                     <x-text-field type="text" name="username" label="Username" />
                     <x-text-field type="text" name="name" label="Name" />
                     <x-text-field type="text" name="email" label="Email" />
-                    <x-text-field type="text" name="email_verified_at" label="Email Verified At" />
-                    <x-text-field type="text" name="password" label="Password" />
-                    <x-text-field type="text" name="remember_token" label="Remember Token" />
                     <x-text-field type="number" name="phone" label="Phone" />
                     <x-text-field type="text" name="address" label="Address" />
                     <x-text-field type="text" name="city" label="City" />
                     <x-text-field type="text" name="state" label="State" />
                     <x-text-field type="number" name="postal_code" label="Postal Code" />
-                    <x-text-field type="text" name="role" label="Role" />
                     <x-select name="active" label="Active">
                         <option value="">Select Active</option>
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
                     </x-select>
 
                     <div class="form-group">
@@ -54,10 +52,17 @@
             <div class="modal-dialog" permission="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="my-modal-title">Update Balance Deposit</h5>
+                        <h5 class="modal-title" id="my-modal-title">Update Saldo</h5>
                     </div>
                     <div class="modal-body">
-                        <x-text-field type="number" name="balance" label="Balance Deposit" />
+                        <x-text-field type="number" name="current_balance" label="Saldo Sekarang" readonly />
+                        <x-select name="type_balance" label="Jenis Transaksi">
+                            <option value="">Pilih Jenis Transaksi</option>
+                            <option value="credit">Credit</option>
+                            <option value="debit">Debit</option>
+                        </x-select>
+                        <x-text-field type="number" name="balance" label="Nominal" />
+                        <x-text-field type="text" name="description_balance" label="Keterangan" />
                     </div>
                     <div class="modal-footer">
                         <button type="submit" wire:click='_reset' class="btn btn-danger btn-sm"><i class="fa fa-times pr-2"></i>Batal</button>
