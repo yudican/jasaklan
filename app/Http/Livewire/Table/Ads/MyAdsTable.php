@@ -2,8 +2,7 @@
 
 namespace App\Http\Livewire\Table\Ads;
 
-use App\Models\Ads;
-use App\Models\Ticket;
+use App\Models\Ads as AdsModel;
 use Mediconesystems\LivewireDatatables\Column;
 use Yudican\LaravelCrudGenerator\Livewire\Table\LivewireDatatable;
 
@@ -15,7 +14,7 @@ class MyAdsTable extends LivewireDatatable
 
   public function builder()
   {
-    return Ads::query()->whereHas('package', function ($query) {
+    return AdsModel::query()->whereHas('package', function ($query) {
       $query->where('type', $this->params);
     })->where('ads.user_id', auth()->user()->id);
   }
