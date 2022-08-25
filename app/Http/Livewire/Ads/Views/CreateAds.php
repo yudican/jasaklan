@@ -20,20 +20,21 @@ class CreateAds extends Component
     public $packages = [];
     public $social_medias = [];
     public $package_lable;
+    public $adsType;
     public $package_amount = 0;
     public $amount_to_pay = 0;
     public $package = null;
     public $type = 'views';
 
+    public function mount($id)
+    {
+        $this->ads_type_id = $id;
+        $this->adsType = AdsType::find($id);
+        $this->social_medias = SocialMedia::where('ads_type_id', $this->ads_type_id)->get();
+        $this->packages = Package::where('ads_type_id', $this->ads_type_id)->get();
+    }
     public function render()
     {
-        if ($this->ads_type_id) {
-            $this->social_medias = SocialMedia::where('ads_type_id', $this->ads_type_id)->get();
-        }
-        if ($this->social_media_id) {
-            $this->packages = Package::where('ads_type_id', $this->ads_type_id)->get();
-        }
-
         if ($this->ads_package_id) {
             $package = Package::find($this->ads_package_id);
             $this->package = $package;

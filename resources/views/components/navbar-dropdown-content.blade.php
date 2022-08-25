@@ -99,7 +99,7 @@
                 </x-slot>
 
                 <x-slot name="content">
-                    <x-dropdown-link :href="route('ads.create')">
+                    <x-dropdown-link :href="route('advertisers.dashboard')">
                         {{ __('Buat Iklan') }}
                     </x-dropdown-link>
 

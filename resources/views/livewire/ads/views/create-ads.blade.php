@@ -14,8 +14,8 @@
 
 </div>
 <div class=" mx-auto block p-6 max-w-lg my-4  bg-white rounded-xl border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white px-3 mb-4">Buat Iklan</h5>
-    <div class="w-full px-3  pb-4">
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white px-3 mb-4">Buat Iklan {{$adsType->type_name}}</h5>
+    {{-- <div class="w-full px-3  pb-4">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
             *Jenis Iklan
         </label>
@@ -25,7 +25,7 @@
             <option value="{{ $ads_type->id }}">{{ $ads_type->type_name }}</option>
             @endforeach
         </select>
-    </div>
+    </div> --}}
     <div class="w-full px-3  pb-4">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
             *Platform Social Media

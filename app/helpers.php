@@ -25,3 +25,19 @@ if (!function_exists('getSetting')) {
     return null;
   }
 }
+
+// get random color
+if (!function_exists('getRandomColor')) {
+  function getRandomColor()
+  {
+    $colors = [
+      'green',
+      'red',
+      'cyan',
+      'indigo',
+      'pink',
+      'orange',
+    ];
+    return $colors[rand(0, count($colors) - 1)];
+  }
+}
