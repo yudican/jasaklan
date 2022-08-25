@@ -13,7 +13,6 @@ use App\Http\Livewire\Admin\SocialMediaController;
 use App\Http\Livewire\Admin\TicketController as AdminTicketController;
 use App\Http\Livewire\Admin\UserController;
 use App\Http\Livewire\Dashboard;
-use App\Models\GeneralSetting;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->as('admin.')->group(function () {
