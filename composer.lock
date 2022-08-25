@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19c44e18cf170a589995491f842bf35b",
+    "content-hash": "31f69d4b3d26680b1287a883b6ebea22",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6192,16 +6192,16 @@
         },
         {
             "name": "yudican/laravel-crud-generator",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yudican/laravel-crud-generator.git",
-                "reference": "574d879e713a149d9f70c887b72b2a756a613b1b"
+                "reference": "e855eb85a6d419c4c93293e9a50d841c069f23be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yudican/laravel-crud-generator/zipball/574d879e713a149d9f70c887b72b2a756a613b1b",
-                "reference": "574d879e713a149d9f70c887b72b2a756a613b1b",
+                "url": "https://api.github.com/repos/yudican/laravel-crud-generator/zipball/e855eb85a6d419c4c93293e9a50d841c069f23be",
+                "reference": "e855eb85a6d419c4c93293e9a50d841c069f23be",
                 "shasum": ""
             },
             "require": {
@@ -6241,9 +6241,9 @@
             ],
             "support": {
                 "issues": "https://github.com/yudican/laravel-crud-generator/issues",
-                "source": "https://github.com/yudican/laravel-crud-generator/tree/v1.0.0"
+                "source": "https://github.com/yudican/laravel-crud-generator/tree/v1.0.1"
             },
-            "time": "2022-08-23T14:20:57+00:00"
+            "time": "2022-08-25T13:20:48+00:00"
         }
     ],
     "packages-dev": [
