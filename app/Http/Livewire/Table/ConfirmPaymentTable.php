@@ -44,22 +44,25 @@ class ConfirmPaymentTable extends LivewireDatatable
                 }
             })->label('Status')->searchable(),
 
-            Column::callback(['id'], function ($id) {
-                return view('crud-generator-components::action-button', [
-                    'id' => $id,
-                    'actions' => [
-                        [
-                            'type' => 'button',
-                            'route' => 'approve(' . $id . ')',
-                            'label' => 'Terima',
-                        ],
-                        [
-                            'type' => 'button',
-                            'route' => 'decline(' . $id . ')',
-                            'label' => 'Tolak',
+            Column::callback(['confirm_payments.id', 'confirm_payments.status'], function ($id, $status) {
+                if ($status == 0) {
+                    return view('crud-generator-components::action-button', [
+                        'id' => $id,
+                        'actions' => [
+                            [
+                                'type' => 'button',
+                                'route' => 'approve(' . $id . ')',
+                                'label' => 'Terima',
+                            ],
+                            [
+                                'type' => 'button',
+                                'route' => 'decline(' . $id . ')',
+                                'label' => 'Tolak',
+                            ]
                         ]
-                    ]
-                ]);
+                    ]);
+                }
+                return '';
             })->label(__('Aksi')),
         ];
     }
