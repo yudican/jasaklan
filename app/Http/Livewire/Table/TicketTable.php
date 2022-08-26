@@ -75,16 +75,14 @@ class TicketTable extends LivewireDatatable
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
-                [
-                    'amount' => -$ticket->getAd->package->commision,
-                    'category' => 'debit',
-                    'description' => "Penayangan Iklan $ads_title $ticket->ads_id",
-                    'user_id' => $ticket->getAd->user_id,
-                    'status' => 1,
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
             ]);
+        } else {
+            $number_of_views = $ticket->getAd->views + 1;
+            $dataView = [
+                'views' => $number_of_views,
+                'status' => $number_of_views == 0 ? 'finish' : 'active',
+            ];
+            $ticket->getAd()->update($dataView);
         }
 
         $ticket->update(['status' => $status]);

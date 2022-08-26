@@ -36,15 +36,6 @@ class ViewVideoDetail extends Component
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
-                [
-                    'amount' => -$view->package->commision,
-                    'category' => 'debit',
-                    'description' => "Penayangan Iklan $view->title $view->id",
-                    'user_id' => $view->user_id,
-                    'status' => 1,
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
             ]);
 
             $number_of_views = $view->views - 1;

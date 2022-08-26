@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Ads\Views;
 
 use App\Models\Ads;
 use App\Models\AdsType;
+use App\Models\Balance;
 use App\Models\Package;
 use App\Models\SocialMedia;
 use Illuminate\Support\Facades\DB;
@@ -78,6 +79,14 @@ class CreateAds extends Component
                 'type' => $this->type,
                 'status' => 'active',
             ];
+
+            Balance::create([
+                'user_id' => $user->id,
+                'amount' => -$this->amount_to_pay,
+                'description' => 'Pembayaran untuk iklan ' . $this->ads_title,
+                'category' => 'debit',
+                'status' => 1
+            ]);
             Ads::create($data);
 
             DB::commit();

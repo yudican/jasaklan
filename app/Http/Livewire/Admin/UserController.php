@@ -82,7 +82,8 @@ class UserController extends Component
         $user->balances()->create([
             'amount' => $type == 'credit' ? $this->balance : -$this->balance,
             'category' => $this->type_balance,
-            'description' => $this->description_balance
+            'description' => $this->description_balance,
+            'status' => 1
         ]);
         $this->_reset();
         return $this->emit('showAlert', ['msg' => 'Balance Berhasil Diupdate']);
