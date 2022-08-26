@@ -3,6 +3,10 @@
 use App\Http\Controllers\Api\PasswordGenerator;
 use App\Http\Controllers\Users\Advertisers\AdvertiserController;
 use App\Http\Controllers\Users\Viewers\ViewerController;
+use App\Http\Livewire\Guest\Disclaimer;
+use App\Http\Livewire\Guest\PrivacyPolicy;
+use App\Http\Livewire\Guest\TermOfConditions;
+use App\Http\Livewire\Guest\TermOfService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +32,11 @@ Route::get('/iklan-view', [AdvertiserController::class, 'indexview']);
 Route::get('/iklan-subscribe', [AdvertiserController::class, 'indexsubscribe']);
 Route::get('/iklan-like', [AdvertiserController::class, 'indexlike']);
 Route::get('/iklan-komentar', [AdvertiserController::class, 'indexkomentar']);
+
+Route::get('/privacy-policy', PrivacyPolicy::class)->name('privacy.policy');
+Route::get('/disclaimer', Disclaimer::class)->name('disclaimer');
+Route::get('/term-of-service', TermOfService::class)->name('term.of.service');
+Route::get('/term-of-conditions', TermOfConditions::class)->name('term.of.condition');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/user.php';

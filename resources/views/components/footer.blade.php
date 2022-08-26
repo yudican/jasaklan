@@ -21,16 +21,16 @@
                         <a href="http://jasaklan.com/contact" class="hover:underline">Contact Us</a>
                     </li>
                     <li>
-                        <a href="http://jasaklan.com/disclaimer" class="hover:underline">Disclaimer</a>
+                        <a href="{{route('disclaimer')}}" class="hover:underline">Disclaimer</a>
                     </li>
                     <li>
-                        <a href="http://jasaklan.com/Privacypolicy" class="hover:underline">Privacy Policy</a>
+                        <a href="{{route('privacy.policy')}}" class="hover:underline">Privacy Policy</a>
                     </li>
                     <li>
                         <a href="http://jasaklan.com/pengembalian" class="hover:underline">Return And Refund</a>
                     </li>
                     <li>
-                        <a href="http://jasaklan.com/tor" class="hover:underline">Terms And Services</a>
+                        <a href="{{route('term.of.condition')}}" class="hover:underline">Terms And Conditions</a>
                     </li>
                 </ul>
             </div>

@@ -90,7 +90,7 @@ class CreateAds extends Component
             Ads::create($data);
 
             DB::commit();
-            return $this->emit('showAlert', ['msg' => 'Ads berhasil ditambahkan', 'redirect' => route('iklan.view.' . $this->type)]);
+            return $this->emit('showAlert', ['msg' => 'Ads berhasil ditambahkan', 'redirect' => route('iklan.myads.' . $this->type)]);
         } catch (\Throwable $th) {
 
             DB::rollback();
