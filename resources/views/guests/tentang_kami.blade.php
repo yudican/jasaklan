@@ -25,7 +25,7 @@
                     Belum lagi para youtuber yang sulit mencapai persyaratan monetize yakni 4000 jam dan 1000 Subcribe.
                     Dengan layanan ini semua hal tersebut dipastikan akan mudah tercapai.
 
-                    Jasaview.com juga membantu siapapun yang lagi membutuhkan penghasilan tambahan, hanya dnegan melihat
+                    jasaklan.com juga membantu siapapun yang lagi membutuhkan penghasilan tambahan, hanya dnegan melihat
                     iklan yang dipasang oleh Advertiser, uang langsung masuk ke akun anda. Para viewer bisa memilih
                     sendiri iklan mana yang mau dilihat karena setiap iklan akan memiliki rate harga yang berbeda beda.
 

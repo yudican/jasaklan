@@ -29,7 +29,7 @@
                         <th scope="col" class="px-6 py-3">
                             Paket
                         </th>
-                        <th  class="px-6 py-3 text-center" colspan="2">
+                        <th class="px-6 py-3 text-center" colspan="2">
                             Action
                         </th>
                     </tr>
@@ -41,7 +41,7 @@
                                 Youtube</p>
                         </th>
                         <td class="px-6 py-4">
-                            <a class="text-blue-700" href="https://www.jasaview.com/member/?p=buat-iklan&tipe=7">https://www.jasaview.com/member/?p=buat-iklan&tipe=7</a>
+                            <a class="text-blue-700" href="https://www. jasaklan.com/member/?p=buat-iklan&tipe=7">https://www. jasaklan.com/member/?p=buat-iklan&tipe=7</a>
                         </td>
                         <td class="px-6 py-4">
                             Buat website jasa iklan
@@ -61,12 +61,11 @@
                             Rp. 60,000 - 100 View Question
                         </td>
                         <td class="">
-                                <a href="">
-                                    <button
-                                        class="px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded">
-                                        Update
-                                    </button>
-                                </a>
+                            <a href="">
+                                <button class="px-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded">
+                                    Update
+                                </button>
+                            </a>
                         </td>
                         <td class="">
                             <a href="">
