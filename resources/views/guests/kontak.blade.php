@@ -15,7 +15,7 @@
                     Kontak Kami
                 </h2>
                 <p class=" lg:text-md text-center m-6 md:text-xs">
-                    Bila ada yang ingin ditanyakan silahkan WA kami di 081372472631 (WA Only)
+                    Bila ada yang ingin ditanyakan silahkan WA kami di 0895614401040 (WA Only)
                 </p>
 
                 <div class="w-fullcontent-center">
@@ -24,51 +24,36 @@
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
                                 Nama Lengkap
                             </label>
-                            <input
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="username" type="text" placeholder="Username">
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
                         </div>
                         <div class="mb-6">
                             <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                                 Email
                             </label>
-                            <input
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="email" type="text" placeholder="Email">
+                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="Email">
 
                             <div class="mb-6">
                                 <label class="block text-gray-700 text-sm font-bold mb-2" for="judul">
                                     Judul Pesan
                                 </label>
-                                <input
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                    id="judul" type="text" placeholder="Judul">
+                                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="judul" type="text" placeholder="Judul">
 
                                 <div class="mb-6">
                                     <label class="block text-gray-700 text-sm font-bold mb-2" for="isi">
                                         Isi Pesan
                                     </label>
-                                    <textarea
-                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        id="pesan" type="text" placeholder="Your message">
+                                    <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="pesan" type="text" placeholder="Your message">
       </textarea>
 
                                     <div class="my-6 ">
-                                        <input
-                                            class="shadow appearance-none border rounded w-16 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            id="" type="text" placeholder="">
+                                        <input class="shadow appearance-none border rounded w-16 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="" type="text" placeholder="">
                                         <p class="inline">+</p>
-                                        <input
-                                            class="shadow appearance-none border rounded w-16 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            id="" type="text" placeholder="">
+                                        <input class="shadow appearance-none border rounded w-16 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="" type="text" placeholder="">
                                         <p class="inline">=</p>
-                                        <input
-                                            class="shadow appearance-none border rounded w-21 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                            id="" type="text" placeholder="">
+                                        <input class="shadow appearance-none border rounded w-21 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="" type="text" placeholder="">
 
                                         <div class="grid grid-cols-2 md:grid-cols-1 gap-2 mb-10">
-                                            <button type="button"
-                                                    class="mt-8 mx-1 rounded-lg w-21 lg:ml-auto font-semibold px-4 py-2 tracking-wide border  transition-colors duration-200 transform text-white bg-blue-700 hover:bg-blue-400  focus:outline-none">
+                                            <button type="button" class="mt-8 mx-1 rounded-lg w-21 lg:ml-auto font-semibold px-4 py-2 tracking-wide border  transition-colors duration-200 transform text-white bg-blue-700 hover:bg-blue-400  focus:outline-none">
                                                 Kirim Pesan
                                             </button>
                                         </div>
@@ -76,7 +61,7 @@
                                     </div>
                                 </div>
                             </div>
-                            </div>
+                        </div>
 
                     </form>
 

@@ -39,6 +39,7 @@ Route::get('/disclaimer', Disclaimer::class)->name('disclaimer');
 Route::get('/term-of-service', TermOfService::class)->name('term.of.service');
 Route::get('/term-of-conditions', TermOfConditions::class)->name('term.of.condition');
 Route::get('/contact-us', ContactUs::class)->name('contact.us');
+Route::get('/refund-and-return', ContactUs::class)->name('return.refund');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/user.php';

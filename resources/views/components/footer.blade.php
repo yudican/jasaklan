@@ -27,7 +27,7 @@
                         <a href="{{route('privacy.policy')}}" class="hover:underline">Privacy Policy</a>
                     </li>
                     <li>
-                        <a href="http://jasaklan.com/pengembalian" class="hover:underline">Return And Refund</a>
+                        <a href="{{route('return.refund')}}" class="hover:underline">Return And Refund</a>
                     </li>
                     <li>
                         <a href="{{route('term.of.condition')}}" class="hover:underline">Terms And Conditions</a>
