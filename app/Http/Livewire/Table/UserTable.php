@@ -23,8 +23,9 @@ class UserTable extends LivewireDatatable
     {
         return [
             Column::name('id')->label('No.'),
-            Column::callback('balance', function ($balance) {
-                return 'Rp ' . number_format($balance, 0, ',', '.');
+            Column::callback(['users.balance', 'users.id'], function ($balance, $user_id) {
+                $user = User::find($user_id);
+                return 'Rp ' . number_format($user->balance, 0, ',', '.');
             })->label('Balance')->searchable(),
             Column::name('username')->label('Username')->searchable()->hide(),
             Column::name('name')->label('Name')->searchable(),
