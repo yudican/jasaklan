@@ -38,7 +38,12 @@ class CreateAds extends Component
         if ($this->ads_package_id) {
             $package = Package::find($this->ads_package_id);
             $this->package = $package;
-            $this->amount_to_pay = $this->number_of_views * $package->price;
+            if ($package->type == 'views') {
+                $this->amount_to_pay = $this->number_of_views * $package->price;
+            } else {
+                $this->number_of_views = $package->benefits;
+                $this->amount_to_pay = $package->price;
+            }
         }
         return view('livewire.ads.views.create-ads', [
             'ads_types' => AdsType::all(),

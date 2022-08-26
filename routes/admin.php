@@ -7,6 +7,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Livewire\Admin\AdsTypeController;
 use App\Http\Livewire\Admin\AlertController as AdminAlertController;
 use App\Http\Livewire\Admin\BlogController as AdminBlogController;
+use App\Http\Livewire\Admin\ConfirmPaymentController;
 use App\Http\Livewire\Admin\GeneralSettingController;
 use App\Http\Livewire\Admin\PackageController;
 use App\Http\Livewire\Admin\SocialMediaController;
@@ -30,6 +31,7 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('ads-type', AdsTypeController::class)->name('ads_type');
         Route::get('social-media', SocialMediaController::class)->name('social_media');
         Route::get('general-setting', GeneralSettingController::class)->name('general.setting');
+        Route::get('verifikasi-pembayaran', ConfirmPaymentController::class)->name('confirm.payment');
         Route::get('tickets', [TicketController::class, 'index'])->name('ticket.index');
         Route::get('ticket/{ticket}/download', [TicketController::class, 'download'])->name('ticket.download');
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');

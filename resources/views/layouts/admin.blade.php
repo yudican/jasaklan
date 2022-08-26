@@ -156,6 +156,12 @@
                 <p>General Setting</p>
               </a>
             </li>
+            <li class="nav-item {{request()->routeIs('admin.confirm.payment') ? 'active' : ''}}">
+              <a href="{{route('admin.confirm.payment')}}">
+                <i class="fas fa-list"></i>
+                <p>Verifikasi Pembayaran</p>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

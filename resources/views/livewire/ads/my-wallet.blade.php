@@ -26,7 +26,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg grid grid-cols-1 md:grid-cols-3 gap-2 p-4">
                 <x-main-box title="Dana Masuk" value="{{ $income }}" class="bg-green-500" />
                 <x-main-box title="Dana Keluar" value="{{ $expense }}" class="bg-red-500" />
-                <x-main-box title="Total Saldo" value="{{ $balance }}" class="bg-blue-500" />
+                <x-main-box title="Total Saldo" value="{{ $income-$expense }}" class="bg-blue-500" />
             </div>
             <div class="mt-8 bg-white p-4">
                 <h1 class="text-xl">Riwayat Transaksi</h1>

@@ -59,14 +59,30 @@
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
             *Url Iklan
         </label>
-        <input wire:model="ads_url" class="w-full border rounded p-2" id="grid-password" type="text" placeholder="https://www.youtube.com/embed/mjwXC8WGY8w">
-        <p class="text-gray-600 text-xs italic">Masukkan link video youtube atau url website Anda.</p>
+        @if($package->type == 'views')
+        <span>
+            <input wire:model="ads_url" class="w-full border rounded p-2" id="grid-password" type="text" placeholder="https://www.youtube.com/embed/mjwXC8WGY8w">
+            <p class="text-gray-600 text-xs italic">Masukkan link video youtube atau url website Anda.</p>
+        </span>
+        @elseif($package->type == 'follower')
+        <input wire:model="ads_url" class="w-full border rounded p-2" id="grid-password" type="text" placeholder="Masukkan link profile social media">
+        <p class="text-gray-600 text-xs italic">Masukkan link url profile Anda.</p>
+        @else
+        <input wire:model="ads_url" class="w-full border rounded p-2" id="grid-password" type="text" placeholder="masukkan link url iklan anda">
+        @endif
+
     </div>
+
     <div class="w-full px-3 pb-4">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
             *Jumlah Tayang
         </label>
+        @if($package->type == 'views')
         <input wire:model="number_of_views" class="w-full border rounded p-2" id="grid-password" type="text" placeholder="">
+        @else
+        <input value="{{$number_of_views}}" class="w-full border rounded p-2" id="grid-password" type="text" placeholder="" readonly>
+        @endif
+
     </div>
     <div class="w-full px-3 pb-4">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
