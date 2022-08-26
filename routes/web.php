@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\PasswordGenerator;
 use App\Http\Controllers\Users\Advertisers\AdvertiserController;
 use App\Http\Controllers\Users\Viewers\ViewerController;
+use App\Http\Livewire\Guest\ContactUs;
 use App\Http\Livewire\Guest\Disclaimer;
 use App\Http\Livewire\Guest\PrivacyPolicy;
 use App\Http\Livewire\Guest\TermOfConditions;
@@ -37,6 +38,7 @@ Route::get('/privacy-policy', PrivacyPolicy::class)->name('privacy.policy');
 Route::get('/disclaimer', Disclaimer::class)->name('disclaimer');
 Route::get('/term-of-service', TermOfService::class)->name('term.of.service');
 Route::get('/term-of-conditions', TermOfConditions::class)->name('term.of.condition');
+Route::get('/contact-us', ContactUs::class)->name('contact.us');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/user.php';

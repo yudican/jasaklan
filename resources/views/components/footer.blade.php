@@ -18,7 +18,7 @@
                         <a href="http://jasaklan.com/tentang_kami" class="hover:underline">About Us</a>
                     </li>
                     <li>
-                        <a href="http://jasaklan.com/contact" class="hover:underline">Contact Us</a>
+                        <a href="{{route('contact.us')}}" class="hover:underline">Contact Us</a>
                     </li>
                     <li>
                         <a href="{{route('disclaimer')}}" class="hover:underline">Disclaimer</a>
