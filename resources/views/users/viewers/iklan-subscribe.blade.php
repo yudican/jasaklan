@@ -7,7 +7,7 @@
         </div>
     </x-slot>
     <div class=" mx-2 block p-6 my-4  bg-white rounded-xl border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-        <h5 class=" text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Keterangan</h5>
+        <h5 class=" text-2xl font-bold tracking-tight text-gray-900  ">Keterangan</h5>
         <p class="font-normal text-gray-700 dark:text-gray-400">1. Setiap views member akan di bayar sesuai dengan yang tertera di bawah</p>
         <p class="font-normal text-gray-700 dark:text-gray-400">2. Dana akan masuk ke menu penghasilan setelah Advertiser melakukan pengecekan maksimal 7 hari.</p>
     </div>

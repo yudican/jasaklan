@@ -37,7 +37,7 @@
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
                 <div class="flex justify-between items-center p-2 rounded-t border-b dark:border-gray-600">
-                    <h3 class="text-xl font-medium text-capitalize text-gray-900 dark:text-white pl-3">
+                    <h3 class="text-xl font-medium text-capitalize text-gray-900   pl-3">
                         Konfirmsi Ambil Tiket {{$ads->package->type}}
                     </h3>
                     <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" wire:click="$emit('toggleModal')">

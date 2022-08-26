@@ -7,14 +7,14 @@
         </div>
     </x-slot> --}}
     <div class=" mx-auto block p-6 w-full my-4  bg-white rounded-xl border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Keterangan</h5>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900  ">Keterangan</h5>
         <p class="font-normal text-gray-700 dark:text-gray-400">1. Setiap views member akan di bayar sesuai dengan yang tertera di bawah</p>
         <p class="font-normal text-gray-700 dark:text-gray-400">2. Dana akan masuk ke menu penghasilan setelah Advertiser melakukan pengecekan maksimal 7 hari.</p>
     </div>
 
     <div class=" text-[10px] py-2 rounded">
 
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Iklan View</h5>
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900  ">Iklan View</h5>
         <div class="grid space-x-1 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 xs:grid-cols-12 text-[10px] py-2 text-center">
             @foreach($views as $view)
             <a href="{{route('viewers.view.detail',['ads_id' => $view->id])}}">
@@ -57,7 +57,7 @@
         {{ $views->links() }}
 
         <div class=" text-[10px] py-4 rounded">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Iklan View (Tiket)</h5>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900  ">Iklan View (Tiket)</h5>
             @foreach($view_tickets as $ads)
             <!-- component -->
             @livewire('ads.views.get-ticket', ['ads' => $ads])
