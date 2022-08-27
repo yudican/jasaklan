@@ -110,102 +110,102 @@
                     </div>
                 </div>
                 <div class="responsive-nav-link h-0 transition-height overflow-hidden">
-                    <x-responsive-nav-link :href="route('user.dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-responsive-nav-link :href="route('user.dashboard')" :active="request()->routeIs('dashboard')" class="text-white hover:text-black focus:text-black">
                         {{ __('Dashboard') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('user.profile')">
+                    <x-responsive-nav-link :href="route('user.profile')" class="text-white hover:text-black focus:text-black">
                         {{ __('Edit Profile') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('user.showPassword')">
+                    <x-responsive-nav-link :href="route('user.showPassword')" class="text-white hover:text-black focus:text-black">
                         {{ __('Ubah Password') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('user.referral')">
+                    <x-responsive-nav-link :href="route('user.referral')" class="text-white hover:text-black focus:text-black">
                         {{ __('Daftar Referral') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('user.bank')">
+                    <x-responsive-nav-link :href="route('user.bank')" class="text-white hover:text-black focus:text-black">
                         {{ __('Akun Bank') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('user.wallet')">
+                    <x-responsive-nav-link :href="route('user.wallet')" class="text-white hover:text-black focus:text-black">
                         {{ __('Dompet') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('advertiser.deposit')">
+                    <x-responsive-nav-link :href="route('advertiser.deposit')" class="text-white hover:text-black focus:text-black">
                         {{ __('Deposit') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('advertisers.dashboard')">
+                    <x-responsive-nav-link :href="route('advertisers.dashboard')" class="text-white hover:text-black focus:text-black">
                         {{ __('Buat Iklan') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('iklan.view.views')">
+                    <x-responsive-nav-link :href="route('iklan.myads',['type'=>'views'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Daftar Iklan View') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('iklan.view.subscribe')">
+                    <x-responsive-nav-link :href="route('iklan.myads',['type'=>'subscribe'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Daftar Iklan Subscribe') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('iklan.view.follower')">
+                    <x-responsive-nav-link :href="route('iklan.myads',['type'=>'follower'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Daftar Iklan Follow') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('iklan.view.like')">
+                    <x-responsive-nav-link :href="route('iklan.myads',['type'=>'like'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Daftar Iklan Like') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('iklan.view.komentar')">
+                    <x-responsive-nav-link :href="route('iklan.myads',['type'=>'komentar'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Daftar Iklan Komentar') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('iklan.view.posting')">
+                    <x-responsive-nav-link :href="route('iklan.myads',['type'=>'posting'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Daftar Iklan Posting') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('iklan.view.posting')">
-                        {{ __('Daftar Iklan Posting') }}
+                    <x-responsive-nav-link :href="route('iklan.myads',['type'=>'share'])" class="text-white hover:text-black focus:text-black">
+                        {{ __('Daftar Iklan Share') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'views'])">
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'views'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Lihat Iklan View') }}
                     </x-responsive-nav-link>
 
-                    {{-- <x-responsive-nav-link :href="route('viewers.question')"> --}}
+                    {{-- <x-responsive-nav-link :href="route('viewers.question')" class="text-white hover:text-black focus:text-black"> --}}
                         {{-- {{ __('Lihat Iklan View Questions') }} --}}
                         {{-- </x-responsive-nav-link> --}}
 
-                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'subscribe'])">
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'subscribe'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Lihat Iklan Subscribe') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'follower'])">
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'follower'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Lihat Iklan Follow') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'like'])">
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'like'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Lihat Iklan Like') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'comment'])">
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'comment'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Lihat Iklan Komentar') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'posting'])">
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'posting'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Lihat Iklan Posting') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'share'])">
+                    <x-responsive-nav-link :href="route('viewers.ads.list',['type' => 'share'])" class="text-white hover:text-black focus:text-black">
                         {{ __('Lihat Iklan Posting') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('viewers.ticket.index')">
+                    <x-responsive-nav-link :href="route('viewers.ticket.index')" class="text-white hover:text-black focus:text-black">
                         {{ __('Tiket Saya') }}
                     </x-responsive-nav-link>
 
-                    <x-responsive-nav-link :href="route('viewers.revenue.index')">
+                    <x-responsive-nav-link :href="route('viewers.revenue.index')" class="text-white hover:text-black focus:text-black">
                         {{ __('Penghasilan') }}
                     </x-responsive-nav-link>
                 </div>

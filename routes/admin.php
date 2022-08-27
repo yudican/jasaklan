@@ -32,8 +32,8 @@ Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('social-media', SocialMediaController::class)->name('social_media');
         Route::get('general-setting', GeneralSettingController::class)->name('general.setting');
         Route::get('verifikasi-pembayaran', ConfirmPaymentController::class)->name('confirm.payment');
-        Route::get('tickets', [TicketController::class, 'index'])->name('ticket.index');
         Route::get('ticket/{ticket}/download', [TicketController::class, 'download'])->name('ticket.download');
+        Route::get('tickets', [TicketController::class, 'index'])->name('ticket.index');
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
         Route::put('tickets/{ticket}/approve', [TicketController::class, 'approve'])->name('ticket.approve');
         Route::put('tickets/{ticket}/decline', [TicketController::class, 'decline'])->name('ticket.decline');

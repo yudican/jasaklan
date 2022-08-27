@@ -35,9 +35,10 @@ Route::get('/blog', function () {
 })->name('blog');
 Route::get('/blog/{slug}', function ($slug) {
     $slug = explode('-', $slug);
-    $blog = Blog::find(end($slug));
-    if ($blog) {
-        return view('guests.detail-blog', compact('blog'));
+    $blog_detail = Blog::find(end($slug));
+    $blogs = Blog::all();
+    if ($blog_detail) {
+        return view('guests.detail-blog', compact('blog_detail', 'blogs'));
     }
     return redirect(route('dashboard'));
 })->name('blog-detail');
