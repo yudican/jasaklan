@@ -109,33 +109,6 @@ class Ads extends Model
     public function getYoutubeIdAttribute()
     {
         $url = $this->url;
-
-        if ($url) {
-            $urls = explode("/embed/", $url);
-            if (count($urls) > 1) {
-                return $urls[1];
-            }
-
-            $urls = explode("/watch?v=", $url);
-            if (count($urls) > 1) {
-                return $urls[1];
-            }
-
-            $urls = explode("/shorts/", $url);
-            if (count($urls) > 1) {
-                return $urls[1];
-            }
-
-            return null;
-        }
-
-        return null;
-    }
-
-    // get youtube id
-    public function getYoutubeId()
-    {
-        $url = $this->url;
         if ($url) {
             $urls = explode("/embed/", $url);
             if (count($urls) > 1) {
