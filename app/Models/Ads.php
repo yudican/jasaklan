@@ -114,16 +114,52 @@ class Ads extends Model
             $urls = explode("/embed/", $url);
             if (count($urls) > 1) {
                 return $urls[1];
-            } else {
-                $urls = explode("/watch?v=", $url);
-                if (count($urls) > 1) {
-                    return $urls[1];
-                }
+            }
+
+            $urls = explode("/watch?v=", $url);
+            if (count($urls) > 1) {
+                return $urls[1];
+            }
+
+            $urls = explode("/shorts/", $url);
+            if (count($urls) > 1) {
+                return $urls[1];
             }
 
             return null;
         }
 
+        return null;
+    }
+
+    // get youtube id
+    public function getYoutubeId()
+    {
+        $url = $this->url;
+        if ($url) {
+            $urls = explode("/embed/", $url);
+            if (count($urls) > 1) {
+                return $urls[1];
+            }
+            $urls = explode("/watch?v=", $url);
+            if (count($urls) > 1) {
+                return $urls[1];
+            }
+            $urls = explode("/shorts/", $url);
+            if (count($urls) > 1) {
+                $params = explode("/", $urls[1]);
+                if (count($params) > 1) {
+                    return $params[0];
+                }
+                return $urls[1];
+            }
+
+            $urls = explode("youtu.be/", $url);
+            if (count($urls) > 1) {
+                return $urls[1];
+            }
+            return null;
+        }
         return null;
     }
 }
