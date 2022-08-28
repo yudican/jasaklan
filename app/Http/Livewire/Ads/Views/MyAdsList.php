@@ -4,13 +4,17 @@ namespace App\Http\Livewire\Ads\Views;
 
 use App\Models\Ads;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class MyAdsList extends Component
 {
+    use WithFileUploads;
     public $type = 'views';
     public $ads_type_id;
     public $ads_url;
     public $ads_title;
+    public $ads_notes;
+    public $ads_photo;
     public $package;
 
     protected $listeners = [
@@ -31,6 +35,7 @@ class MyAdsList extends Component
         $this->ads_type_id = $row->id;
         $this->ads_url = $row->url;
         $this->ads_title = $row->title;
+        $this->ads_notes = $row->notes;
         $this->package = $row->package;
 
         return $this->emit('showModalUpdate', 'show');
@@ -40,12 +45,17 @@ class MyAdsList extends Component
     {
         $this->validate([
             'ads_type_id' => 'required',
-            'ads_url' => 'required',
             'ads_title' => 'required',
         ]);
         $ads = Ads::find($this->ads_type_id);
         $ads->url = $this->ads_url;
         $ads->title = $this->ads_title;
+        $ads->notes = $this->ads_notes;
+        if ($this->ads_photo) {
+            $file = $this->ads_photo->store('images/ads', 'public');
+            $ads->photo = $file;
+        }
+        $this->_reset();
         $ads->save();
         $this->emit('showModalUpdate', 'hide');
         return $this->emit('showAlert', ['msg' => 'Iklan Berhasil Diperbarui']);
@@ -58,5 +68,7 @@ class MyAdsList extends Component
         $this->ads_type_id = null;
         $this->ads_url = null;
         $this->ads_title = null;
+        $this->ads_title = null;
+        $this->ads_notes = null;
     }
 }

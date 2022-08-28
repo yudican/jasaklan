@@ -12,6 +12,9 @@
                 <img src="https://img.icons8.com/ios/50/000000/combi-ticket.png" class="inline-block w-[15px]" />
                 <span class="text-xs">Sisa Tikets: {{ $ads->getTicket() }}</span>
             </div>
+            <button type="button" id="pay-button"
+                class="mt-2 items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
+                wire:click="$emit('toggleModalDetail')">Detail</button>
         </div>
         <div>
             <div class="flex flex-column justify-between py-4">
@@ -97,6 +100,74 @@
         </div>
     </div>
 
+    <div id="detail-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full" wire:ignore.self>
+        <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex justify-between items-center p-2 rounded-t border-b dark:border-gray-600">
+                    <h3 class="text-xl font-medium text-capitalize text-gray-900   pl-3">
+                        Detail Iklan {{$ads->package->type}}
+                    </h3>
+                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" wire:click="$emit('toggleModalDetail')">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-3 space-y-6">
+                    <div class="shadow p-4 rounded-lg">
+                        <div class="w-full pb-4">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                Judul Iklan
+                            </label>
+                            <a href="{{$ads->url}}" class="text-gray-600 text-xs">{{$ads->title}}</a>
+                        </div>
+                        @if ($ads->url != '#')
+                        <div class="w-full pb-4">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                Url Iklan
+                            </label>
+                            <a href="{{$ads->url}}" class="text-gray-600 text-xs">{{$ads->url}}</a>
+                        </div>
+                        @endif
+
+                        @if ($ads->notes)
+                        <div class="w-full pb-4">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                Catatan
+                            </label>
+                            <p class="text-gray-600 text-xs">{{$ads->notes}}</p>
+                        </div>
+                        @endif
+
+
+                        @if ($ads->photo)
+                        <div class="w-full pb-4">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                Photo
+                            </label>
+                            <a href="#" wire:click="getAdsImage('{{$ads->photo}}')" class="text-gray-600 text-xs">Download Image</a>
+                        </div>
+                        @endif
+
+                        <div class="w-full pb-4">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                                Bonus Komisi Iklan
+                            </label>
+                            <p class="text-gray-600 text-xs">Rp {{number_format($ads->package->commission)}} / {{$ads->package->type}}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal footer -->
+                <div class="flex justify-between items-center p-3 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
+                </div>
+            </div>
+        </div>
+    </div>
+
     @push('scripts')
     <script>
         $(document).ready(function(value) {
@@ -104,6 +175,11 @@
             var modal = new Modal(targetEl);
             window.livewire.on('toggleModal', (data) => {
                 modal.toggle();
+            });
+            var targetElDetail = document.getElementById('detail-modal');
+            var modalDetail = new Modal(targetElDetail);
+            window.livewire.on('toggleModalDetail', (data) => {
+                modalDetail.toggle();
             });
         })
     </script>

@@ -9,12 +9,16 @@ use App\Models\Package;
 use App\Models\SocialMedia;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CreateAds extends Component
 {
+    use WithFileUploads;
     public $ads_type_id;
     public $ads_url;
     public $ads_title;
+    public $ads_notes;
+    public $ads_photo;
     public $ads_package_id;
     public $social_media_id;
     public $number_of_views;
@@ -55,7 +59,6 @@ class CreateAds extends Component
     {
         $this->validate([
             'ads_type_id' => 'required',
-            'ads_url' => 'required',
             'ads_title' => 'required',
             'ads_package_id' => 'required',
             'number_of_views' => 'numeric',
@@ -73,12 +76,19 @@ class CreateAds extends Component
                 'social_media' => $social_media->social_media_name,
                 'package_id' => $this->ads_package_id,
                 'title' => $this->ads_title,
-                'url' => $this->ads_url,
+                'notes' => $this->ads_notes,
+                'url' => $this->ads_url ?? '#',
                 'views' => $this->number_of_views,
                 'amount' => $this->amount_to_pay,
                 'type' => $this->type,
                 'status' => 'active',
             ];
+
+            if ($this->ads_photo) {
+                $file = $this->ads_photo->store('images/ads', 'public');
+                $data['photo'] = $file;
+            }
+
 
             Balance::create([
                 'user_id' => $user->id,
@@ -92,7 +102,7 @@ class CreateAds extends Component
             DB::commit();
             return $this->emit('showAlert', ['msg' => 'Ads berhasil ditambahkan', 'redirect' => route('iklan.myads', ['type' => $this->package->type])]);
         } catch (\Throwable $th) {
-            // dd($th->getMessage());
+            dd($th->getMessage());
             DB::rollback();
             return $this->emit('showAlertError', ['msg' => 'Ads gagal ditambahkan']);
             //throw $th;

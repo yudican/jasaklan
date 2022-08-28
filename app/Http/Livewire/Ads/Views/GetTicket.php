@@ -54,4 +54,12 @@ class GetTicket extends Component
 
         return $this->emit('showAlert', ['msg' => 'Ticket berhasil di ambil', 'redirect' => route('viewers.ticket.index')]);
     }
+
+    public function getAdsImage($image)
+    {
+        if ($image) {
+            return response()->download(storage_path('/app/public/' . $image));
+        }
+        return $this->emit('showAlertError', ['msg' => 'Gambar tidak ditemukan']);
+    }
 }

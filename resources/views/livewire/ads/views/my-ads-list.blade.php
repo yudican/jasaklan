@@ -30,6 +30,30 @@
                         <input wire:model="ads_title" class="w-full border rounded p-2" id="grid-password" type="text" placeholder="">
                         <p class="text-gray-600 text-xs italic">Masukkan judul Iklan</p>
                     </div>
+                    @if(in_array($type,['posting']))
+                    <div class="w-full px-3 pb-4">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                            *Caption
+                        </label>
+                        <textarea wire:model="ads_notes" class="w-full border rounded p-2" id="grid-password" type="text" placeholder="Isi Caption yang diisi oleh publisher"></textarea>
+                    </div>
+                    @endif
+                    @if(in_array($type,['subscribe']))
+                    <div class="w-full px-3 pb-4">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                            *Catatan
+                        </label>
+                        <textarea wire:model="ads_notes" class="w-full border rounded p-2" id="grid-password" type="text" placeholder="Isi Catatan Untuk Calon Subcriber anda"></textarea>
+                    </div>
+                    @endif
+                    @if($type == 'posting')
+                    <div class="px-3 mb-4">
+                        <label for="file" class="block mb-2 text-sm font-medium text-black-900 dark:text-black-300">Photo</label>
+                        <input type="file" wire:model="ads_photo" id="file" class="bg-black-50 border border-black-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-black-600 dark:border-black-500 dark:placeholder-black-400 dark:text-black"
+                            required>
+                    </div>
+                    @endif
+                    @if($type != 'posting')
                     <div class="w-full px-3 pb-4">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                             *Url Iklan
@@ -45,8 +69,8 @@
                         @else
                         <input wire:model="ads_url" class="w-full border rounded p-2" id="grid-password" type="text" placeholder="masukkan link url iklan anda">
                         @endif
-
                     </div>
+                    @endif
                 </div>
                 <!-- Modal footer -->
                 <div class="flex justify-between items-center p-3 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
