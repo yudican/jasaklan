@@ -102,6 +102,9 @@
                     <x-dropdown-link :href="route('advertisers.dashboard')">
                         {{ __('Buat Iklan') }}
                     </x-dropdown-link>
+                    <x-dropdown-link :href="route('ticket.ads')">
+                        {{ __('Daftar Tiket Masuk') }}
+                    </x-dropdown-link>
 
                     <x-dropdown-link :href="route('iklan.myads',['type'=>'views'])">
                         {{ __('Daftar Iklan View') }}

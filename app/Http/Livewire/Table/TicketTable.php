@@ -18,6 +18,13 @@ class TicketTable extends LivewireDatatable
 
     public function builder()
     {
+        if ($this->params == 'advister') {
+            return Ticket::query()->whereHas('getAd', function ($q) {
+                $q->where('user_id', auth()->user()->id);
+            });
+        } elseif ($this->params == 'viewers') {
+            return Ticket::query()->where('user_id', auth()->user()->id);
+        }
         return Ticket::query();
     }
 
@@ -32,14 +39,25 @@ class TicketTable extends LivewireDatatable
                 return 'Rp' . number_format($commission, 0, ',', '.');
             })->label('Komisi')->searchable(),
             Column::callback(['screenshot', 'id'], function ($image, $ticket_id) {
-                return '<a href="' . route('admin.ticket.download', $ticket_id) . '">Download Image</a>';
+                if ($image) {
+                    $file = "'$image'";
+                    return '<a href="#" wire:click="downloadImge(' . $file . ')">Download Image</a>';
+                }
+                return '-';
             })->label('Screenshot'),
+            Column::callback(['screenshot_akhir', 'id'], function ($image, $ticket_id) {
+                if ($image) {
+                    $file = "'$image'";
+                    return '<a href="#" wire:click="downloadImge(' . $file . ')">Download Image</a>';
+                }
+                return '-';
+            })->label('Screenshot Akhir'),
             Column::name('status')->label('Status')->searchable(),
             Column::name('user.name')->label('User')->hide(),
 
             Column::callback(['id'], function ($id) {
                 $ticket = Ticket::find($id);
-                if ($ticket->status == 'review') {
+                if ($ticket->status == 'review' && $this->params == 'advister') {
                     return view('livewire.components.action-button', [
                         'id' => $id,
                         'actions' => [
@@ -59,6 +77,11 @@ class TicketTable extends LivewireDatatable
                 return null;
             })->label(__('Aksi')),
         ];
+    }
+
+    public function downloadImge($type = null)
+    {
+        return response()->download(storage_path('/app/public/images/tickets/proofs/' . $type));
     }
 
     public function updateStatus($id, $status)

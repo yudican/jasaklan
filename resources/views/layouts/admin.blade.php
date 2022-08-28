@@ -108,12 +108,12 @@
                 <p>Dashboard</p>
               </a>
             </li>
-            <li class="nav-item {{request()->routeIs('admin.ticket') ? 'active' : ''}}">
+            {{-- <li class="nav-item {{request()->routeIs('admin.ticket') ? 'active' : ''}}">
               <a href="{{route('admin.ticket')}}">
                 <i class="fas fa-tags"></i>
                 <p>Ticket</p>
               </a>
-            </li>
+            </li> --}}
             <li class="nav-item {{request()->routeIs('admin.blog') ? 'active' : ''}}">
               <a href="{{route('admin.blog')}}">
                 <i class="fas fa-list"></i>

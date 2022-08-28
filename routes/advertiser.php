@@ -5,6 +5,7 @@ use App\Http\Controllers\Users\Advertisers\Create\FollowController;
 use App\Http\Controllers\Users\Advertisers\Create\CommentController;
 use App\Http\Controllers\Users\Advertisers\Create\LikeController;
 use App\Http\Livewire\Ads\DashboardAds;
+use App\Http\Livewire\Ads\Views\MyTicketAds;
 use App\Http\Livewire\Ads\Views\CreateAds;
 use App\Http\Livewire\Ads\Views\MyAdsList;
 use Illuminate\Support\Facades\Route;
@@ -42,4 +43,6 @@ Route::middleware('auth')->prefix('advertiser')->group(function () {
 
     Route::get('buat-iklan/{id}', CreateAds::class)->name('ads.create');
     Route::get('daftar-iklan-{type}', MyAdsList::class)->name('iklan.myads');
+
+    Route::get('ticket', MyTicketAds::class)->name('ticket.ads');
 });
