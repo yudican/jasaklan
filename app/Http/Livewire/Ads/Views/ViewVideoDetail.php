@@ -12,7 +12,12 @@ class ViewVideoDetail extends Component
     public $view;
     public function mount($ads_id)
     {
-        $this->view = Ads::find($ads_id);
+        $view = Ads::find($ads_id);
+        $this->view = $view;
+        $viewUser = $view->userViews()->where('user_id', auth()->user()->id)->first();
+        if ($viewUser) {
+            return redirect()->route('viewers.ads.list', ['type' => 'views']);
+        }
     }
     public function render()
     {
@@ -26,10 +31,9 @@ class ViewVideoDetail extends Component
             $view = Ads::find($this->view->id);
             $user = auth()->user();
             $user->adViews()->attach($view->id);
-
             Balance::insert([
                 [
-                    'amount' => $view->package->commision,
+                    'amount' => $view->package->commission,
                     'category' => 'credit',
                     'description' => "Menonton Iklan $view->title $view->id",
                     'user_id' => $user->id,

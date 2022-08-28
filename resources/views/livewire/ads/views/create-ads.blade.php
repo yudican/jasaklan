@@ -61,7 +61,7 @@
         </label>
         @if($package->type == 'views')
         <span>
-            <input wire:model="ads_url" class="w-full border rounded p-2" id="grid-password" type="text" placeholder="https://www.youtube.com/embed/mjwXC8WGY8w">
+            <input wire:model="ads_url" class="w-full border rounded p-2" id="grid-password" type="text" placeholder="https://www.youtube.com/watch?v=jfrOx3FbSGA">
             <p class="text-gray-600 text-xs italic">Masukkan link video youtube atau url website Anda.</p>
         </span>
         @elseif($package->type == 'follower')

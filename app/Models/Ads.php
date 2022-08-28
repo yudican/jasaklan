@@ -114,6 +114,11 @@ class Ads extends Model
             $urls = explode("/embed/", $url);
             if (count($urls) > 1) {
                 return $urls[1];
+            } else {
+                $urls = explode("/watch?v=", $url);
+                if (count($urls) > 1) {
+                    return $urls[1];
+                }
             }
 
             return null;

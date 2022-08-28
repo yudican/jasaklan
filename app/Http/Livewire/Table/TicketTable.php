@@ -68,7 +68,7 @@ class TicketTable extends LivewireDatatable
             $ads_title = $ticket->getAd->title;
             Balance::insert([
                 [
-                    'amount' => $ticket->getAd->package->commision,
+                    'amount' => $ticket->getAd->package->commission,
                     'category' => 'credit',
                     'description' => "Menonton Iklan $ads_title $ticket->ads_id",
                     'user_id' => $ticket->user_id,
@@ -86,6 +86,8 @@ class TicketTable extends LivewireDatatable
         }
 
         $ticket->update(['status' => $status]);
+        $this->refreshTable();
+        return $this->emit('showAlertError', ['msg' => 'Tiket Berhasil di ' . $status]);
     }
 
     public function refreshTable()

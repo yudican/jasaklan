@@ -42,10 +42,9 @@ class RegisteredUserController extends Controller
 
         $emailPrefix = explode('@', $request->email)[1];
 
-        if($emailPrefix != 'gmail.com') {
+        if ($emailPrefix != 'gmail.com') {
             return back()->with(['status' => 'Mohon menggunakan akun Gmail']);
         }
-
         $user = User::create([
             'name' => $request->name,
             'username' => $request->name,
@@ -53,7 +52,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        if (! blank($request->referral_code) && $referred = User::where('username', $request->referral_code)->first()) {
+        if (!blank($request->referral_code) && $referred = User::where('username', $request->referral_code)->first()) {
             $user->referredBy()->create([
                 'referred_by_id' => $referred->id,
             ]);
