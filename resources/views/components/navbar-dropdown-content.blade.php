@@ -126,7 +126,7 @@
                         {{ __('Daftar Iklan Like') }}
                     </x-dropdown-link>
 
-                    <x-dropdown-link :href="route('iklan.myads',['type'=>'komentar'])">
+                    <x-dropdown-link :href="route('iklan.myads',['type'=>'comment'])">
                         {{ __('Daftar Iklan Komentar') }}
                     </x-dropdown-link>
 

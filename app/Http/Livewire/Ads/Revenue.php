@@ -11,7 +11,7 @@ class Revenue extends Component
     public function mount()
     {
         $user = auth()->user();
-        $revenue_today = $user->balances()->where('status', 0)->where('description', 'like', "%Menonton Iklan%")->where('created_at', now())->sum('amount');
+        $revenue_today = $user->balances()->where('status', 0)->where('description', 'like', "%Menonton Iklan%")->whereDate('created_at', now())->sum('amount');
         $revenue_total = $user->balances()->where('description', 'like', "%Menonton Iklan%")->sum('amount');
 
         $this->revenue_today = 'Rp ' . number_format($revenue_today);

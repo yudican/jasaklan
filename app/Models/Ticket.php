@@ -14,7 +14,7 @@ class Ticket extends Model
 
     //public $incrementing = false;
 
-    protected $fillable = ['account_name', 'ads_id', 'commission', 'name', 'screenshot', 'screenshot_akhir', 'status', 'user_id'];
+    protected $fillable = ['account_name', 'ads_id', 'commission', 'name', 'screenshot', 'screenshot_akhir', 'status', 'user_id', 'notes'];
 
     protected $dates = [];
 

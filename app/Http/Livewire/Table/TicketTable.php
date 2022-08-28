@@ -12,18 +12,17 @@ use Yudican\LaravelCrudGenerator\Livewire\Table\LivewireDatatable;
 class TicketTable extends LivewireDatatable
 {
     protected $listeners = ['refreshTable'];
-    public $hideable = 'select';
+    // public $hideable = 'select';
     public $table_name = 'tickets';
     public $hide = [];
+    public $loading = false;
 
     public function builder()
     {
-        if ($this->params == 'advister') {
+        if (request()->segment(1) == 'advertiser') {
             return Ticket::query()->whereHas('getAd', function ($q) {
                 $q->where('user_id', auth()->user()->id);
             });
-        } elseif ($this->params == 'viewers') {
-            return Ticket::query()->where('user_id', auth()->user()->id);
         }
         return Ticket::query();
     }
@@ -33,8 +32,8 @@ class TicketTable extends LivewireDatatable
         return [
             Column::name('id')->label('No.'),
             Column::name('name')->label('Nama Tiket')->searchable(),
-            Column::name('account_name')->label('Account Name')->searchable(),
-            Column::name('getAd.title')->label('Ads')->searchable()->hide(),
+            // Column::name('account_name')->label('Account Name')->searchable(),
+            Column::name('getAd.title')->label('Judul Iklan')->searchable()->hide(),
             Column::callback('commission', function ($commission) {
                 return 'Rp' . number_format($commission, 0, ',', '.');
             })->label('Komisi')->searchable(),
@@ -57,7 +56,7 @@ class TicketTable extends LivewireDatatable
 
             Column::callback(['id'], function ($id) {
                 $ticket = Ticket::find($id);
-                if ($ticket->status == 'review' && $this->params == 'advister') {
+                if ($ticket->status == 'review') {
                     return view('livewire.components.action-button', [
                         'id' => $id,
                         'actions' => [
@@ -99,18 +98,18 @@ class TicketTable extends LivewireDatatable
                     'updated_at' => now()
                 ],
             ]);
+            $ticket->update(['status' => $status]);
+            $this->refreshTable();
+            return $this->emit('showAlert', ['msg' => 'Tiket Berhasil di ' . $status]);
         } else {
-            $number_of_views = $ticket->getAd->views + 1;
-            $dataView = [
-                'views' => $number_of_views,
-                'status' => $number_of_views == 0 ? 'finish' : 'active',
-            ];
-            $ticket->getAd()->update($dataView);
+            return $this->emit('setTicketId', $id);
+            // $number_of_views = $ticket->getAd->views + 1;
+            // $dataView = [
+            //     'views' => $number_of_views,
+            //     'status' => $number_of_views == 0 ? 'finish' : 'active',
+            // ];
+            // $ticket->getAd()->update($dataView);
         }
-
-        $ticket->update(['status' => $status]);
-        $this->refreshTable();
-        return $this->emit('showAlert', ['msg' => 'Tiket Berhasil di ' . $status]);
     }
 
     public function refreshTable()

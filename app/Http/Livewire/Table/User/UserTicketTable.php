@@ -26,6 +26,12 @@ class UserTicketTable extends LivewireDatatable
         return 'Rp' . number_format($commission, 0, ',', '.');
       })->label('Komisi')->searchable(),
       Column::name('getAd.package.adsType.social_media')->label('Platform')->searchable(),
+      Column::callback('notes', function ($notes) {
+        if ($notes) {
+          return $notes;
+        }
+        return '-';
+      })->label('Catatan')->searchable(),
       Column::name('status')->label('Status')->searchable(),
     ];
   }

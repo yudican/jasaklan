@@ -17,6 +17,7 @@ class TicketController extends Component
     public $screenshot;
     public $screenshot_akhir;
     public $status;
+    public $notes;
     public $user_id;
 
 
@@ -28,7 +29,7 @@ class TicketController extends Component
     public $update_mode = false;
     public $modal = true;
 
-    protected $listeners = ['getDataTicketById', 'getTicketId'];
+    protected $listeners = ['getDataTicketById', 'getTicketId', 'setTicketId'];
 
     public function mount()
     {
@@ -155,7 +156,9 @@ class TicketController extends Component
     {
         $this->emit('closeModal');
         $this->emit('refreshTable');
+        $this->emit('toggleModalReject', 'hide');
         $this->ticket_id = null;
+        $this->notes = null;
         $this->account_name = null;
         $this->ads_id = null;
         $this->commission = null;
@@ -168,5 +171,28 @@ class TicketController extends Component
         $this->form_active = false;
         $this->update_mode = false;
         $this->modal = true;
+    }
+
+    public function setTicketId($id)
+    {
+        $this->emit('toggleModalReject', 'show');
+        $this->ticket_id = $id;
+    }
+
+    public function saveReject()
+    {
+        $ticket = Ticket::find($this->ticket_id);
+        $number_of_views = $ticket->getAd->views + 1;
+        $dataView = [
+            'views' => $number_of_views,
+            'status' => $number_of_views == 0 ? 'finish' : 'active',
+        ];
+        $ticket->getAd()->update($dataView);
+        $ticket->update([
+            'status' => 'reject',
+            'notes' => $this->notes,
+        ]);
+        $this->_reset();
+        return $this->emit('showAlert', ['msg' => 'Tiket Berhasil Ditolak']);
     }
 }
