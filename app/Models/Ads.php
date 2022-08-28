@@ -147,7 +147,7 @@ class Ads extends Model
             }
             $urls = explode("/shorts/", $url);
             if (count($urls) > 1) {
-                $params = explode("/", $urls[1]);
+                $params = explode("?", $urls[1]);
                 if (count($params) > 1) {
                     return $params[0];
                 }
