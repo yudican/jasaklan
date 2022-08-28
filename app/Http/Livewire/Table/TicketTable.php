@@ -87,7 +87,7 @@ class TicketTable extends LivewireDatatable
 
         $ticket->update(['status' => $status]);
         $this->refreshTable();
-        return $this->emit('showAlertError', ['msg' => 'Tiket Berhasil di ' . $status]);
+        return $this->emit('showAlert', ['msg' => 'Tiket Berhasil di ' . $status]);
     }
 
     public function refreshTable()
