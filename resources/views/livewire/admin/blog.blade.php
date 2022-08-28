@@ -22,7 +22,12 @@
             @if ($form_active)
             <div class="card">
                 <div class="card-body">
-                    <x-text-field type="text" name="title" label="Title" />
+                    <div class="form-group ">
+                        <label for="title" class="placeholder"><b>Title</b> <span style="color:red"></span></label>
+
+                        <input id="title" value="" name="title" wire:model="title" type="text" class="form-control  w-100" placeholder="Masukkan Title">
+                        <small id="helpId" class="text-danger">{{ $errors->has('title') ? $errors->first('title') : '' }}</small>
+                    </div>
                     <div wire:ignore class="form-group @error('body')has-error has-feedback @enderror">
                         <label for="body" class="text-capitalize">Body</label>
                         <textarea wire:model="body" id="body" class="form-control"></textarea>
