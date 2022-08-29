@@ -10,7 +10,7 @@
             </div>
             <div>
                 <img src="https://img.icons8.com/ios/50/000000/combi-ticket.png" class="inline-block w-[15px]" />
-                <span class="text-xs">Sisa Tikets: {{ $ads->getTicket() }}</span>
+                <span class="text-xs">Sisa Tikets: {{ $ads->views }}</span>
             </div>
             <button type="button" id="pay-button"
                 class="mt-2 items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"

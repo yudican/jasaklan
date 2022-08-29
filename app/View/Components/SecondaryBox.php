@@ -14,12 +14,14 @@ class SecondaryBox extends Component
     public $title;
     public $value;
     public $class;
+    public $imgUrl;
 
-    public function __construct($title, $value, $class = null)
+    public function __construct($title, $value, $class = null, $imgUrl = null)
     {
         $this->title = $title;
         $this->value = $value;
         $this->class = $class;
+        $this->imgUrl = $imgUrl;
     }
 
     /**
