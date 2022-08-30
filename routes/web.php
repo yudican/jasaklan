@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/callback', [CallbackController::class, 'callback']);
+
 
 Route::get('/ref/{referralCode}', function (string $referralCode) {
     return redirect('/register?ref=' . $referralCode);
