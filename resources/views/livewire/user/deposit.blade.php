@@ -67,6 +67,18 @@
                 </div>
                 <div class="mt-2">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                        Type Pembayaran
+                    </label>
+                    <select wire:model="pembayaran_type" id="paket_view" class="w-full border rounded p-2">
+                        <option value="">Pilih Type Pembayaran</option>
+                        <option value="manual">Manual</option>
+                        <option value="otomatis">Otomatis</option>
+                    </select>
+                    <small id="helpId" class="text-danger">{{ $errors->has('pembayaran') ? $errors->first('pembayaran') : '' }}</small>
+                </div>
+                @if ($pembayaran_type == 'manual')
+                <div class="mt-2">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                         Metode Pembayaran
                     </label>
                     <select wire:model="pembayaran" id="paket_view" class="w-full border rounded p-2">
@@ -79,6 +91,7 @@
                     </select>
                     <small id="helpId" class="text-danger">{{ $errors->has('pembayaran') ? $errors->first('pembayaran') : '' }}</small>
                 </div>
+                @endif
                 <div class="mt-4">
                     <button type="button" id="pay-button"
                         class="w-full items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"

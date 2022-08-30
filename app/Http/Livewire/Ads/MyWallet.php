@@ -11,10 +11,9 @@ class MyWallet extends Component
     public $balance = 0;
     public function mount()
     {
-        $balance = auth()->user()->balances();
-        $this->income = $balance->where('category', 'credit')->sum('amount');
-        $this->expense = $balance->where('category', 'debit')->sum('amount');
-        $this->balance = $balance->sum('amount');
+        $this->income = auth()->user()->balances()->where('category', 'credit')->where('status', 1)->sum('amount');
+        $this->expense = auth()->user()->balances()->where('category', 'debit')->where('status', 1)->sum('amount');
+        $this->balance = auth()->user()->balances()->where('status', 1)->sum('amount');
     }
 
     public function render()

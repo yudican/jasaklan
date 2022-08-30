@@ -82,7 +82,7 @@ class ConfirmPaymentTable extends LivewireDatatable
             [
                 'amount' => $confirmPayment->nominal,
                 'category' => 'credit',
-                'description' => "Deposite",
+                'description' => "Deposit",
                 'status' => 1,
                 'user_id' => $confirmPayment->user_id,
                 'created_at' => now(),

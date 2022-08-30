@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\PasswordGenerator;
+use App\Http\Controllers\CallbackController;
 use App\Http\Controllers\Users\Advertisers\AdvertiserController;
 use App\Http\Controllers\Users\Viewers\ViewerController;
 use App\Http\Livewire\Guest\ContactUs;
@@ -29,6 +30,7 @@ Route::get('/dashboard', function () {
     return view('guests.home');
 })->middleware(['auth'])->name('dashboard');
 
+Route::post('/callback', [CallbackController::class, 'callback']);
 Route::get('/iklan-view', [AdvertiserController::class, 'indexview']);
 Route::get('/iklan-subscribe', [AdvertiserController::class, 'indexsubscribe']);
 Route::get('/iklan-like', [AdvertiserController::class, 'indexlike']);

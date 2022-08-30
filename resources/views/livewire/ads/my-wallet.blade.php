@@ -24,9 +24,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg grid grid-cols-1 md:grid-cols-3 gap-2 p-4">
-                <x-main-box title="Dana Masuk" value="Rp {{ number_format(auth()->user()->balances()->where('category', 'credit')->sum('amount')) }}" class="bg-green-500" />
-                <x-main-box title="Dana Keluar" value="Rp {{ number_format(auth()->user()->balances()->where('category', 'debit')->sum('amount')) }}" class="bg-red-500" />
-                <x-main-box title="Total Saldo" value="Rp {{ number_format(auth()->user()->balance) }}" class="bg-blue-500" />
+                <x-main-box title="Dana Masuk" value="Rp {{ number_format($income) }}" class="bg-green-500" />
+                <x-main-box title="Dana Keluar" value="Rp {{ number_format($expense) }}" class="bg-red-500" />
+                <x-main-box title="Total Saldo" value="Rp {{ number_format($balance) }}" class="bg-blue-500" />
             </div>
             <div class="mt-8 bg-white p-4">
                 <h1 class="text-xl">Riwayat Transaksi</h1>
@@ -82,6 +82,8 @@
                                         <span>Selesai</span>
                                         @elseif ($transaction->status == 2)
                                         <span>Pending</span>
+                                        @elseif ($transaction->status == 3)
+                                        <span>Batal</span>
                                         @else
                                         <span>Belum Selesai</span>
                                         @endif
