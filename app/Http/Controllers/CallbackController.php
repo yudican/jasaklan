@@ -20,5 +20,7 @@ class CallbackController extends Controller
                 $balance->update(['status' => 3]);
             }
         }
+
+        return true;
     }
 }
