@@ -62,7 +62,7 @@ class Deposit extends Component
                     "quantity" =>  1
                 ]],
 
-                "callbackUrl" =>  "https://jasaklan.com/callback",
+                "callbackUrl" =>  "https://jasaklan.com/api/callback",
                 "returnUrl" =>  "https://jasaklan.com/user/wallet",
                 "expiryPeriod" =>  1
             ];
