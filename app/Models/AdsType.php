@@ -24,7 +24,7 @@ class AdsType extends Model
      */
     public function packages()
     {
-        return $this->hasMany(Packages::class);
+        return $this->hasMany(Packages::class)->whereNotNull('updated_at');
     }
 
     /**
@@ -34,6 +34,6 @@ class AdsType extends Model
      */
     public function socialMedia()
     {
-        return $this->hasMany(SocialMedia::class);
+        return $this->hasMany(SocialMedia::class)->whereNotNull('updated_at');
     }
 }

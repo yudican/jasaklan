@@ -75,7 +75,7 @@ class SocialMediaController extends Component
 
     public function delete()
     {
-        SocialMedia::find($this->social_media_id)->delete();
+        SocialMedia::find($this->social_media_id)->update(['updated_at' => null]);
 
         $this->_reset();
         return $this->emit('showAlert', ['msg' => 'Data Berhasil Dihapus']);

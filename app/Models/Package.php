@@ -46,6 +46,6 @@ class Package extends Model
      */
     public function adsType()
     {
-        return $this->belongsTo(AdsType::class);
+        return $this->belongsTo(AdsType::class)->whereNotNull('updated_at');
     }
 }

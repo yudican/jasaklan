@@ -35,8 +35,8 @@ class CreateAds extends Component
     {
         $this->ads_type_id = $id;
         $this->adsType = AdsType::find($id);
-        $this->social_medias = SocialMedia::where('ads_type_id', $this->ads_type_id)->get();
-        $this->packages = Package::where('ads_type_id', $this->ads_type_id)->get();
+        $this->social_medias = SocialMedia::where('ads_type_id', $this->ads_type_id)->whereNotNull('updated_at')->get();
+        $this->packages = Package::where('ads_type_id', $this->ads_type_id)->whereNotNull('updated_at')->get();
     }
     public function render()
     {
@@ -51,7 +51,7 @@ class CreateAds extends Component
             }
         }
         return view('livewire.ads.views.create-ads', [
-            'ads_types' => AdsType::all(),
+            'ads_types' => AdsType::whereNotNull('updated_at')->get(),
         ]);
     }
 

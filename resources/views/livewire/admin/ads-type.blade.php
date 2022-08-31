@@ -85,6 +85,10 @@
                 $('#confirm-modal').modal('hide')
                 $('#form-modal').modal('hide')
             });
+
+            window.livewire.on('confirmDelete', (data) => {
+                $('#confirm-modal').modal(data)
+            });
         })
     </script>
     @endpush

@@ -56,7 +56,7 @@ class PackageTable extends LivewireDatatable
 
     public function confirmDelete($id)
     {
-        $this->emit('getPackageId', $id);
+        $this->getId($id);
         $this->emit('confirmDelete', 'show');
     }
 

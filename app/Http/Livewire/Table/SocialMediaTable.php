@@ -16,7 +16,7 @@ class SocialMediaTable extends LivewireDatatable
 
     public function builder()
     {
-        return SocialMedia::query();
+        return SocialMedia::query()->whereNotNull('updated_at');
     }
 
     public function columns()
@@ -45,6 +45,12 @@ class SocialMediaTable extends LivewireDatatable
                 ]);
             })->label(__('Aksi')),
         ];
+    }
+
+    public function confirmDelete($id)
+    {
+        $this->getId($id);
+        $this->emit('confirmDelete', 'show');
     }
 
     public function getDataById($id)

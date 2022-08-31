@@ -69,7 +69,7 @@ class AdsTypeController extends Component
 
     public function delete()
     {
-        AdsType::find($this->ads_type_id)->delete();
+        AdsType::find($this->ads_type_id)->update(['updated_at' => null]);
 
         $this->_reset();
         return $this->emit('showAlert', ['msg' => 'Data Berhasil Dihapus']);

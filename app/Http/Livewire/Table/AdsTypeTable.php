@@ -16,7 +16,7 @@ class AdsTypeTable extends LivewireDatatable
 
     public function builder()
     {
-        return AdsType::query();
+        return AdsType::query()->whereNotNull('updated_at');
     }
 
     public function columns()
@@ -44,6 +44,12 @@ class AdsTypeTable extends LivewireDatatable
                 ]);
             })->label(__('Aksi')),
         ];
+    }
+
+    public function confirmDelete($id)
+    {
+        $this->getId($id);
+        $this->emit('confirmDelete', 'show');
     }
 
     public function getDataById($id)
