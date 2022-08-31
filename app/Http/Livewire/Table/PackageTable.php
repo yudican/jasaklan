@@ -15,7 +15,7 @@ class PackageTable extends LivewireDatatable
 
     public function builder()
     {
-        return Package::query()->whereNotNull('updated_at');
+        return Package::query()->whereNotNull('packages.updated_at');
     }
 
     public function columns()

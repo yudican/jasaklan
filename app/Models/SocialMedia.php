@@ -13,7 +13,7 @@ class SocialMedia extends Model
 
     //public $incrementing = false;
 
-    protected $fillable = ['ads_type_id', 'social_media_name', 'social_media_status', 'updated_at'];
+    protected $fillable = ['ads_type_id', 'social_media_name', 'social_media_status'];
 
     protected $dates = [];
 
@@ -25,6 +25,6 @@ class SocialMedia extends Model
      */
     public function adsType()
     {
-        return $this->belongsTo(AdsType::class)->whereNotNull('updated_at');
+        return $this->belongsTo(AdsType::class)->whereNotNull('social_media.updated_at');
     }
 }

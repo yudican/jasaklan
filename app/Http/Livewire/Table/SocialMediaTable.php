@@ -16,7 +16,7 @@ class SocialMediaTable extends LivewireDatatable
 
     public function builder()
     {
-        return SocialMedia::query()->whereNotNull('updated_at');
+        return SocialMedia::query()->whereNotNull('social_media.updated_at');
     }
 
     public function columns()

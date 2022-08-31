@@ -34,7 +34,7 @@ class SocialMediaController extends Component
     public function render()
     {
         return view('livewire.admin.social-media', [
-            'ads_types' => AdsType::all()
+            'ads_types' => AdsType::whereNotNull('updated_at')->get()
         ])->layout('layouts.admin');
     }
 
@@ -75,7 +75,7 @@ class SocialMediaController extends Component
 
     public function delete()
     {
-        SocialMedia::find($this->social_media_id)->update(['updated_at' => null]);
+        SocialMedia::find($this->social_media_id)->delete();
 
         $this->_reset();
         return $this->emit('showAlert', ['msg' => 'Data Berhasil Dihapus']);

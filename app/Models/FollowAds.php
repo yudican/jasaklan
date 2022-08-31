@@ -37,6 +37,6 @@ class FollowAds extends Model
 
     public function package(): BelongsTo
     {
-        return $this->belongsTo(Package::class, 'package_id')->whereNotNull('updated_at');
+        return $this->belongsTo(Package::class, 'package_id')->whereNotNull('packages.updated_at');
     }
 }
