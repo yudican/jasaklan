@@ -27,7 +27,7 @@ class AdsTypeTable extends LivewireDatatable
             Column::name('type_action')->label('Type Action')->searchable(),
 
             Column::callback(['id'], function ($id) {
-                return view('livewire.components.action-button', [
+                return view('crud-generator-components::action-button', [
                     'id' => $id,
                     'actions' => [
                         [

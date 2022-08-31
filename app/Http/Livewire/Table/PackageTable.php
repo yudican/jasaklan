@@ -30,7 +30,7 @@ class PackageTable extends LivewireDatatable
             Column::name('commission')->label('Commission')->searchable(),
 
             Column::callback(['id'], function ($id) {
-                return view('livewire.components.action-button', [
+                return view('crud-generator-components::action-button', [
                     'id' => $id,
                     'actions' => [
                         [

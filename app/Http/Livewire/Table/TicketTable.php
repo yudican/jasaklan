@@ -57,7 +57,7 @@ class TicketTable extends LivewireDatatable
             Column::callback(['id'], function ($id) {
                 $ticket = Ticket::find($id);
                 if ($ticket->status == 'review') {
-                    return view('livewire.components.action-button', [
+                    return view('crud-generator-components::action-button', [
                         'id' => $id,
                         'actions' => [
                             [

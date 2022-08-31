@@ -45,7 +45,7 @@ class UserTable extends LivewireDatatable
             })->label(__(' Status')),
 
             Column::callback(['id'], function ($id) {
-                return view('livewire.components.action-button', [
+                return view('crud-generator-components::action-button', [
                     'id' => $id,
                     'actions' => [
                         [
