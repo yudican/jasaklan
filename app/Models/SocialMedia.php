@@ -13,7 +13,7 @@ class SocialMedia extends Model
 
     //public $incrementing = false;
 
-    protected $fillable = ['ads_type_id', 'social_media_name', 'social_media_status'];
+    protected $fillable = ['ads_type_id', 'social_media_name', 'social_media_status', 'updated_at'];
 
     protected $dates = [];
 

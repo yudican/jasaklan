@@ -13,7 +13,7 @@ class AdsType extends Model
 
     //public $incrementing = false;
 
-    protected $fillable = ['type_name', 'type_action'];
+    protected $fillable = ['type_name', 'type_action', 'updated_at'];
 
     protected $dates = [];
 
