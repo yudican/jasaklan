@@ -28,7 +28,7 @@ class SocialMediaTable extends LivewireDatatable
             Column::name('social_media_status')->label('Social Media Status')->searchable(),
 
             Column::callback(['id'], function ($id) {
-                return view('crud-generator-components::action-button', [
+                return view('livewire.components.action-button', [
                     'id' => $id,
                     'actions' => [
                         [

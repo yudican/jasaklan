@@ -23,24 +23,24 @@ class AdsTypeTable extends LivewireDatatable
     {
         return [
             Column::name('id')->label('No.'),
-Column::name('type_name')->label('Type Name')->searchable(),
-Column::name('type_action')->label('Type Action')->searchable(),
+            Column::name('type_name')->label('Type Name')->searchable(),
+            Column::name('type_action')->label('Type Action')->searchable(),
 
             Column::callback(['id'], function ($id) {
-                return view('crud-generator-components::action-button', [
+                return view('livewire.components.action-button', [
                     'id' => $id,
                     'actions' => [
-                                    [
-                                        'type' => 'button',
-                                        'route' => 'getDataById(' . $id . ')',
-                                        'label' => 'Edit',
-                                    ],
-                                    [
-                                        'type' => 'button',
-                                        'route' => 'confirmDelete(' . $id . ')',
-                                        'label' => 'Hapus',
-                                    ]
-                                ]
+                        [
+                            'type' => 'button',
+                            'route' => 'getDataById(' . $id . ')',
+                            'label' => 'Edit',
+                        ],
+                        [
+                            'type' => 'button',
+                            'route' => 'confirmDelete(' . $id . ')',
+                            'label' => 'Hapus',
+                        ]
+                    ]
                 ]);
             })->label(__('Aksi')),
         ];

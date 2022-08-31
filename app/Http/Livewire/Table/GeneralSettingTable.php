@@ -23,24 +23,19 @@ class GeneralSettingTable extends LivewireDatatable
     {
         return [
             Column::name('id')->label('No.'),
-Column::name('name')->label('Name')->searchable(),
-Column::name('value')->label('Value')->searchable(),
+            Column::name('name')->label('Name')->searchable(),
+            Column::name('value')->label('Value')->searchable(),
 
             Column::callback(['id'], function ($id) {
-                return view('crud-generator-components::action-button', [
+                return view('livewire.components.action-button', [
                     'id' => $id,
                     'actions' => [
-                                    [
-                                        'type' => 'button',
-                                        'route' => 'getDataById(' . $id . ')',
-                                        'label' => 'Edit',
-                                    ],
-                                    [
-                                        'type' => 'button',
-                                        'route' => 'confirmDelete(' . $id . ')',
-                                        'label' => 'Hapus',
-                                    ]
-                                ]
+                        [
+                            'type' => 'button',
+                            'route' => 'getDataById(' . $id . ')',
+                            'label' => 'Edit',
+                        ],
+                    ]
                 ]);
             })->label(__('Aksi')),
         ];
