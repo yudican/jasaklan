@@ -38,6 +38,6 @@ class PostingAds extends Model
 
     public function package(): BelongsTo
     {
-        return $this->belongsTo(Package::class, 'package_id');
+        return $this->belongsTo(Package::class, 'package_id')->whereNotNull('updated_at');
     }
 }

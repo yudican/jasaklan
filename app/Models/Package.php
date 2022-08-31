@@ -17,7 +17,8 @@ class Package extends Model
         'price',
         'benefits',
         'commission',
-        'ads_type_id'
+        'ads_type_id',
+        'updated_at'
     ];
 
     const FOLLOWER   = "follower";

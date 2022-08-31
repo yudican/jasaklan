@@ -92,7 +92,7 @@ class PackageController extends Component
 
     public function delete()
     {
-        Package::find($this->package_id)->delete();
+        Package::find($this->package_id)->update(['updated_at' => null]);
 
         $this->_reset();
         return $this->emit('showAlert', ['msg' => 'Data Berhasil Dihapus']);

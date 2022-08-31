@@ -15,7 +15,7 @@ class PackageTable extends LivewireDatatable
 
     public function builder()
     {
-        return Package::query();
+        return Package::query()->whereNotNull('updated_at');
     }
 
     public function columns()
@@ -52,6 +52,12 @@ class PackageTable extends LivewireDatatable
     public function getDataById($id)
     {
         $this->emit('getDataPackageById', $id);
+    }
+
+    public function confirmDelete($id)
+    {
+        $this->emit('getPackageId', $id);
+        $this->emit('confirmDelete', 'show');
     }
 
     public function getId($id)
