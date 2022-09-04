@@ -22,7 +22,7 @@ class UserTicketTable extends LivewireDatatable
     return [
       Column::name('id')->label('No.'),
       Column::name('name')->label('Nama Tiket')->searchable(),
-      Column::callback('commission', function ($commission) {
+      Column::callback('getAd.package.commission', function ($commission) {
         return 'Rp' . number_format($commission, 0, ',', '.');
       })->label('Komisi')->searchable(),
       Column::name('getAd.package.adsType.social_media')->label('Platform')->searchable(),
